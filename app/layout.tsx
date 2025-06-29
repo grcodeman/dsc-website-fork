@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Developer Student Club",
-  description: "A community of developers and tech enthusiasts",
+  title: "Data Science Club at WMU",
+  description: "Student club at WMU focused on Data Science, AI and ML",
 };
 
 export default function RootLayout({
