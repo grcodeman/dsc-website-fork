@@ -14,7 +14,7 @@ const About = () => {
           <div className="flex-1 p-8">
             <h3 className="text-2xl font-heading mb-6 text-teal">Our Mission</h3>
             <p className="text-offwhite/90 mb-4 leading-relaxed">
-              At the Data Science Club, we're dedicated to exploring the frontiers of data science, machine learning, and artificial intelligence. 
+              At the Data Science Club, we&apos;re dedicated to exploring the frontiers of data science, machine learning, and artificial intelligence. 
               We believe in the power of data to transform understanding and create innovative solutions.
             </p>
             <p className="text-offwhite/90 mb-4 leading-relaxed">
