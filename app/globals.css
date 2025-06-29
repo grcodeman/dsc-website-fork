@@ -12,8 +12,8 @@
   --offwhite: #E5E5E5;
   
   /* Typography */
-  --font-heading: var(--font-jetbrains-mono);
-  --font-body: var(--font-inter);
+  --font-heading: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', sans-serif;
 }
 
 /* Custom theme properties */
