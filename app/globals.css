@@ -10,17 +10,20 @@
   --teal: #00FFC3;
   --violet: #B200FF;
   --offwhite: #E5E5E5;
+  
+  /* Typography */
+  --font-heading: var(--font-jetbrains-mono);
+  --font-body: var(--font-inter);
 }
 
-@theme inline {
+/* Custom theme properties */
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-charcoal: var(--charcoal);
   --color-teal: var(--teal);
   --color-violet: var(--violet);
   --color-offwhite: var(--offwhite);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,5 +36,16 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 700;
 }
