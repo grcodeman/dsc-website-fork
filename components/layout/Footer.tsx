@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-violet/10 mt-8 pt-8 text-center text-offwhite/60">
-          <p>© {new Date().getFullYear()} Developer Student Club. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Data Science Club at WMU. All rights reserved.</p>
         </div>
       </div>
     </footer>
