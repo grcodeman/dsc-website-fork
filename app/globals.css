@@ -1,21 +1,32 @@
 @import "tailwindcss";
 
 :root {
+  /* Light mode colors (kept for reference but using dark color scheme) */
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* New color palette */
+  --charcoal: #1A1A1D;
+  --teal: #00FFC3;
+  --violet: #B200FF;
+  --offwhite: #E5E5E5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-charcoal: var(--charcoal);
+  --color-teal: var(--teal);
+  --color-violet: var(--violet);
+  --color-offwhite: var(--offwhite);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1A1A1D; /* Very dark charcoal background */
+    --foreground: #E5E5E5; /* Off-white text */
   }
 }
 
