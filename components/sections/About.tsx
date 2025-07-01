@@ -22,9 +22,8 @@ const About = () => {
             </p>
             <h3 className="text-2xl font-heading my-6 text-teal">What We Do</h3>
             <ul className="list-disc list-inside space-y-2 text-offwhite/90">
-              <li>Host workshops and hands-on learning sessions</li>
-              <li>Connect with industry professionals and researchers</li>
               <li>Collaborate on real-world data science projects</li>
+              <li>Connect with industry professionals and researchers</li>
               <li>Create a supportive environment for learning and growth</li>
             </ul>
           </div>
@@ -32,7 +31,7 @@ const About = () => {
           {/* Right Column - TensorFlow.js Demo Placeholder */}
           <div className="flex-1 bg-charcoal/30 rounded-lg border border-teal/20 flex flex-col">
             <div className="border-b border-teal/20 p-4">
-              <h3 className="text-xl font-heading text-teal">Sentiment Analysis Demo</h3>
+              <h3 className="text-xl font-heading text-teal">TODO Demo</h3>
               <p className="text-sm text-offwhite/70">Powered by TensorFlow.js</p>
             </div>
             <div className="p-6 flex-1 flex flex-col">
