@@ -13,30 +13,30 @@ type Event = {
 const events: Event[] = [
   {
     id: 1,
-    title: "Data Science Info Event",
+    title: "Data Science Kickoff Fall 2025",
     date: "TBA",
-    description: "Description",
+    description: "Kicking off the semester with an info session! Students can learn about new projects and meet other members.",
     color: "teal",
   },
   {
     id: 2,
     title: "Company Tour",
     date: "TBA",
-    description: "Description",
+    description: "Currently in the works, stay tuned!",
     color: "violet",
   },
   {
     id: 3,
-    title: "Data Visualization Showcase",
+    title: "Data Science Kickoff Spring 2026",
     date: "TBA",
-    description: "Description",
+    description: "Kicking off the semester with an info session! Students can learn about new projects and meet other members.",
     color: "teal",
   },
   {
     id: 4,
     title: "Stryker Company Tour",
     date: "TBA",
-    description: "Description",
+    description: "Visiting Stryker to learn about their industry usage of data science and ai.",
     color: "violet",
   },
 ];
