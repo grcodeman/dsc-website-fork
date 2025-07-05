@@ -3,7 +3,7 @@ import React from 'react';
 // LED Component for social links
 const LED = ({ active = false, color = 'teal', pulse = false }: { active?: boolean; color?: string; pulse?: boolean }) => {
   // Use predefined CSS classes for the LEDs
-  let ledClass = active ? `led-${color}` : 'led-inactive';
+  const ledClass = active ? `led-${color}` : 'led-inactive';
   const pulseClass = pulse && active ? 'animate-pulse' : '';
   
   return <span className={`h-2 w-2 rounded-full inline-block mr-1.5 ${ledClass} ${pulseClass}`}></span>;
