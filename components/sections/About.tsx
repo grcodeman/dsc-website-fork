@@ -15,10 +15,10 @@ const About = () => {
             <h3 className="text-2xl font-heading mb-6 text-teal">Our Mission</h3>
             <p className="text-offwhite/90 mb-4 leading-relaxed">
               At the Data Science Club, we&apos;re dedicated to exploring the frontiers of data science, machine learning, and artificial intelligence. 
-              We believe in the power of data to transform understanding and create innovative solutions.
+              We believe in the power of data to improve understanding and creating innovative solutions.
             </p>
             <p className="text-offwhite/90 mb-4 leading-relaxed">
-              Our community brings together students from all disciplines who share a passion for data-driven insights and cutting-edge technology.
+              Our community is open to students from all majors who share a passion for data driven insights and technology.
             </p>
             <h3 className="text-2xl font-heading my-6 text-teal">What We Do</h3>
             <ul className="list-disc list-inside space-y-2 text-offwhite/90">
