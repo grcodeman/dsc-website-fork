@@ -123,7 +123,7 @@ const Hero = () => {
           <div className="w-full md:w-1/2 h-[40vh] md:h-[60vh] relative order-2 md:order-1 mt-8 md:mt-0">
             <canvas 
               ref={canvasRef} 
-              className="w-full h-full bg-charcoal/30 rounded-lg border border-teal/20"
+              className="w-full h-full bg-charcoal/30 rounded-lg"
             />
           </div>
           
