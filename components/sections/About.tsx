@@ -1,6 +1,46 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+
+// Image Gallery component that cycles through images
+const ImageGallery = () => {
+  const images = [
+    '/advia-23.jpg',
+    '/mtw-24.jpg',
+    '/advia-24.jpg',
+    '/stryker-25.jpg'
+  ];
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+    
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
+  
+  return (
+    <div className="w-full h-full relative overflow-hidden">
+      {images.map((src, index) => (
+        <div 
+          key={src}
+          className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <Image 
+            src={src} 
+            alt={`Club image ${index + 1}`} 
+            fill 
+            className="object-cover" style={{ objectPosition: 'center 35%' }}
+            priority={index === 0}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const About = () => {
   return (
@@ -28,26 +68,10 @@ const About = () => {
             </ul>
           </div>
           
-          {/* Right Column - TensorFlow.js Demo Placeholder */}
+          {/* Right Column - Image Gallery */}
           <div className="flex-1 bg-charcoal/30 rounded-lg border border-teal/20 flex flex-col">
-            <div className="border-b border-teal/20 p-4">
-              <h3 className="text-xl font-heading text-teal">TODO Demo</h3>
-              <p className="text-sm text-offwhite/70">Powered by TensorFlow.js</p>
-            </div>
-            <div className="p-6 flex-1 flex flex-col">
-              <div className="bg-charcoal/50 p-4 rounded mb-4 flex-1 flex items-center justify-center">
-                <p className="text-offwhite/60 text-center">TensorFlow.js demo will be integrated here</p>
-              </div>
-              <div className="mt-auto">
-                <div className="w-full h-2 bg-violet/20 rounded-full overflow-hidden">
-                  <div className="h-full w-0 bg-gradient-to-r from-teal to-violet"></div>
-                </div>
-                <div className="flex justify-between mt-2 text-xs text-offwhite/60">
-                  <span>Negative</span>
-                  <span>Neutral</span>
-                  <span>Positive</span>
-                </div>
-              </div>
+            <div className="flex-1 flex overflow-hidden rounded-lg">
+              <ImageGallery />
             </div>
           </div>
         </div>
