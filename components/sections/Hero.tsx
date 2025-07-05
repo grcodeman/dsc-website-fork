@@ -141,7 +141,7 @@ const Hero = () => {
               <p className="text-xl md:text-2xl max-w-2xl mb-6">
                 WMU Student Community for Data Science and AI/ML
               </p>
-              <button className="bg-teal text-charcoal font-heading px-8 py-3 rounded-md hover:bg-teal/80 transition-colors uppercase tracking-widest font-bold shadow-lg transform hover:scale-105 duration-300 border-2 border-teal cursor-pointer">
+              <button className="bg-[rgb(0,230,170)] text-black font-heading px-8 py-3 rounded-md hover:bg-[rgb(0,230,170)]/80 transition-colors uppercase tracking-widest font-bold shadow-lg transform hover:scale-105 duration-300 border-2 border-[rgb(0,230,170)] cursor-pointer">
                 JOIN NOW
               </button>
             </div>
