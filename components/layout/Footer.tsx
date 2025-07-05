@@ -45,7 +45,7 @@ const Footer = () => {
           <div className="flex items-center justify-between mb-2 border-b border-violet/20 pb-1">
             <div className="flex items-center">
               <div className="h-3 w-3 rounded-full led-teal mr-2 animate-pulse"></div>
-              <p className="text-teal text-xs font-mono">NETWORK STATUS</p>
+              <p className="text-teal text-xs font-mono">CLUB STATUS</p>
             </div>
             <div className="text-xs text-offwhite/60 font-mono">{new Date().toISOString().split('T')[0]}</div>
           </div>
