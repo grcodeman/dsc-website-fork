@@ -118,9 +118,10 @@ const Hero = () => {
   return (
     <section className="min-h-[90vh] flex items-center">
       <div className="container mx-auto px-4 pt-2 pb-4">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+        {/* Create a grid-like structure with two equal columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Canvas Placeholder - Left side on desktop */}
-          <div className="w-full md:w-1/2 h-[40vh] md:h-[60vh] relative order-2 md:order-1 mt-8 md:mt-0">
+          <div className="h-[40vh] md:h-[60vh] relative order-2 md:order-1 flex items-center justify-center">
             <canvas 
               ref={canvasRef} 
               className="w-full h-full bg-charcoal/30 rounded-lg"
@@ -128,16 +129,22 @@ const Hero = () => {
           </div>
           
           {/* Content - Right side on desktop */}
-          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-1 md:order-2">
-            <h1 className="text-4xl md:text-6xl font-heading tracking-widest mb-6 uppercase text-teal">
-              Data Science Club
-            </h1>
-            <p className="text-xl md:text-2xl max-w-2xl mb-8">
-              WMU Student Community for Data Science and AI
-            </p>
-            <button className="bg-teal text-charcoal font-heading px-8 py-3 rounded-md hover:bg-teal/80 transition-colors uppercase tracking-widest font-bold shadow-lg transform hover:scale-105 duration-300 border-2 border-teal cursor-pointer">
-              Join Now
-            </button>
+          <div className="flex flex-col order-1 md:order-2 h-full justify-center md:-mt-10">
+            <div className="md:text-left text-center">
+              <h1 className="text-4xl md:text-6xl font-heading tracking-widest mb-6 uppercase text-teal">
+                DATA
+                <br />
+                SCIENCE
+                <br />
+                CLUB
+              </h1>
+              <p className="text-xl md:text-2xl max-w-2xl mb-6">
+                WMU Student Community for Data Science and AI
+              </p>
+              <button className="bg-teal text-charcoal font-heading px-8 py-3 rounded-md hover:bg-teal/80 transition-colors uppercase tracking-widest font-bold shadow-lg transform hover:scale-105 duration-300 border-2 border-teal cursor-pointer">
+                JOIN NOW
+              </button>
+            </div>
           </div>
         </div>
       </div>
