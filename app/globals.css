@@ -9,6 +9,9 @@
   --charcoal: #1A1A1D;
   --teal: #00FFC3;
   --violet: #B200FF;
+  --blue: #00A3FF;
+  --pink: #FF00D6;
+  --green: #00FF66;
   --offwhite: #E5E5E5;
   
   /* Typography */
@@ -39,6 +42,37 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   letter-spacing: 0.01em;
+}
+
+/* LED indicator glow effects */
+.led-teal {
+  background-color: var(--teal);
+  box-shadow: 0 0 4px 1px var(--teal);
+}
+
+.led-blue {
+  background-color: var(--blue);
+  box-shadow: 0 0 4px 1px var(--blue);
+}
+
+.led-violet {
+  background-color: var(--violet);
+  box-shadow: 0 0 4px 1px var(--violet);
+}
+
+.led-pink {
+  background-color: var(--pink);
+  box-shadow: 0 0 4px 1px var(--pink);
+}
+
+.led-green {
+  background-color: var(--green);
+  box-shadow: 0 0 4px 1px var(--green);
+}
+
+.led-inactive {
+  background-color: #4B4B4B;
+  box-shadow: 0 0 2px 0px rgba(255, 255, 255, 0.1) inset;
 }
 
 h1, h2, h3, h4, h5, h6 {
