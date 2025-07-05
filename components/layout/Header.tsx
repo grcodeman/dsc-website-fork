@@ -2,8 +2,8 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-10 w-full px-4 py-3">
-      <div className="max-w-screen-2xl mx-auto rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg px-6 py-3 flex justify-between items-center">
+    <header className="sticky top-0 z-10 w-full py-3">
+      <div className="container mx-auto rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg px-6 py-3 flex justify-between items-center">
         <div className="font-heading text-xl tracking-widest text-teal">DSC @ WMU</div>
         <nav className="hidden md:flex space-x-8">
           <a href="#projects" className="hover:text-teal transition-colors">Projects</a>
