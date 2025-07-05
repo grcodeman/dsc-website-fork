@@ -117,7 +117,7 @@ const Hero = () => {
 
   return (
     <section className="min-h-[90vh] flex items-center">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 pt-2 pb-4">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           {/* Canvas Placeholder - Left side on desktop */}
           <div className="w-full md:w-1/2 h-[40vh] md:h-[60vh] relative order-2 md:order-1 mt-8 md:mt-0">
