@@ -91,8 +91,7 @@ const Hero = () => {
         
         // Project 3D coordinates to 2D screen
         const scale = 600 / (600 + rotatedZ); // Perspective scaling
-        const projectedX = centerX + rotatedX * scale;
-        const projectedY = centerY + digit.y * scale;
+        // Calculate projection directly in the final position calculation
         
         // No mouse hover interactions - use exact rotated position
         // This prevents the torus from collapsing
