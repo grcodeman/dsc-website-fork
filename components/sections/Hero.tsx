@@ -6,28 +6,120 @@ const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   useEffect(() => {
-    // Canvas placeholder logic can be added here later
-    // This is just a placeholder for now
     const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        // Set canvas dimensions
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-        
-        // Draw a placeholder pattern
-        ctx.fillStyle = 'rgba(0, 255, 195, 0.1)';
-        for (let i = 0; i < 20; i++) {
-          const x = Math.random() * canvas.width;
-          const y = Math.random() * canvas.height;
-          const size = Math.random() * 40 + 10;
-          ctx.beginPath();
-          ctx.arc(x, y, size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas dimensions and handle resize
+    const handleResize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    
+    // Create an array of digits (1s and 0s) that form the torus
+    interface Digit {
+      x: number;
+      y: number;
+      z: number;
+      originalX: number;
+      originalY: number;
+      originalZ: number;
+      char: string;
+      size: number;
+      color: string;
+      displacement: number;
     }
+    
+    const digits: Digit[] = [];
+    const torusRadius = Math.min(canvas.width, canvas.height) * 0.3; // Major radius
+    const tubeRadius = torusRadius * 0.3; // Minor radius
+    const totalDigits = 500; // Total number of digits to render
+    
+    // Create digits positioned in a torus shape
+    for (let i = 0; i < totalDigits; i++) {
+      // Parametric equation for a torus
+      const u = Math.random() * Math.PI * 2; // Angle around the tube
+      const v = Math.random() * Math.PI * 2; // Angle around the center of the torus
+      
+      const x = (torusRadius + tubeRadius * Math.cos(u)) * Math.cos(v);
+      const y = (torusRadius + tubeRadius * Math.cos(u)) * Math.sin(v);
+      const z = tubeRadius * Math.sin(u);
+      
+      // Add a digit at this position
+      digits.push({
+        x,
+        y,
+        z,
+        originalX: x,
+        originalY: y,
+        originalZ: z,
+        char: Math.random() > 0.5 ? '1' : '0',
+        size: 10 + Math.random() * 8, // Size variation
+        color: `rgba(0, ${200 + Math.random() * 55}, ${150 + Math.random() * 45}, ${0.6 + Math.random() * 0.4})`, // Teal variations
+        displacement: 0
+      });
+    }
+    
+    // Track animation state
+    let animationFrameId: number;
+    let angle = 0;
+    
+    // No mouse hover effects
+    
+    // Animation function
+    const animate = () => {
+      angle += 0.005; // Slow rotation speed
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Center of the canvas
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      
+      // Sort digits by z-index for pseudo-3D effect
+      const sortedDigits = [...digits].sort((a, b) => a.z - b.z);
+      
+      // Draw each digit
+      sortedDigits.forEach(digit => {
+        // Apply a slow rotation to the torus
+        const rotatedX = digit.x * Math.cos(angle) - digit.z * Math.sin(angle);
+        const rotatedZ = digit.x * Math.sin(angle) + digit.z * Math.cos(angle);
+        
+        // Project 3D coordinates to 2D screen
+        const scale = 600 / (600 + rotatedZ); // Perspective scaling
+        const projectedX = centerX + rotatedX * scale;
+        const projectedY = centerY + digit.y * scale;
+        
+        // No mouse hover interactions - use exact rotated position
+        // This prevents the torus from collapsing
+        
+        // Calculate final display position
+        const finalScale = 600 / (600 + rotatedZ);
+        const finalX = centerX + rotatedX * finalScale;
+        const finalY = centerY + digit.y * finalScale;
+        
+        // Draw the digit
+        ctx.font = `${digit.size * finalScale}px monospace`;
+        ctx.fillStyle = digit.color;
+        ctx.fillText(digit.char, finalX, finalY);
+      });
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    
+    // Start animation
+    animate();
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      // No mousemove event to remove
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (
