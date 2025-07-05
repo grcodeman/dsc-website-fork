@@ -38,7 +38,7 @@ const NetworkLink = ({
 
 const Footer = () => {
   return (
-    <footer className="mt-auto py-6 bg-charcoal/95 border-t border-violet/30">
+    <footer className="mt-auto py-6 bg-charcoal/95">
       <div className="container mx-auto px-4">
         {/* Network Panel */}
         <div className="max-w-lg mx-auto bg-charcoal border border-violet/40 rounded-md p-3 shadow-md">
