@@ -89,18 +89,14 @@ const Hero = () => {
         const rotatedX = digit.x * Math.cos(angle) - digit.z * Math.sin(angle);
         const rotatedZ = digit.x * Math.sin(angle) + digit.z * Math.cos(angle);
         
-        // No explicit scale calculation needed - we'll calculate it directly where used
-        
-        // No mouse hover interactions - use exact rotated position
-        // This prevents the torus from collapsing
-        
-        // Calculate final display position
-        const finalScale = 600 / (600 + rotatedZ);
-        const finalX = centerX + rotatedX * finalScale;
-        const finalY = centerY + digit.y * finalScale;
+        // Calculate display position with perspective scaling directly
+        // The torus maintains its shape without any hover effects
+        const perspectiveScale = 600 / (600 + rotatedZ);
+        const finalX = centerX + rotatedX * perspectiveScale;
+        const finalY = centerY + digit.y * perspectiveScale;
         
         // Draw the digit
-        ctx.font = `${digit.size * finalScale}px monospace`;
+        ctx.font = `${digit.size * perspectiveScale}px monospace`;
         ctx.fillStyle = digit.color;
         ctx.fillText(digit.char, finalX, finalY);
       });
