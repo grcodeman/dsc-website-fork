@@ -139,7 +139,7 @@ const Hero = () => {
                 CLUB
               </h1>
               <p className="text-xl md:text-2xl max-w-2xl mb-6">
-                WMU Student Community for Data Science and AI
+                WMU Student Community for Data Science and AI/ML
               </p>
               <button className="bg-teal text-charcoal font-heading px-8 py-3 rounded-md hover:bg-teal/80 transition-colors uppercase tracking-widest font-bold shadow-lg transform hover:scale-105 duration-300 border-2 border-teal cursor-pointer">
                 JOIN NOW
