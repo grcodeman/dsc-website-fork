@@ -38,14 +38,14 @@ const NetworkLink = ({
 
 const Footer = () => {
   return (
-    <footer className="mt-auto py-6 bg-charcoal/95 border-t border-violet/30">
+    <footer className="mt-auto py-6 bg-charcoal/95">
       <div className="container mx-auto px-4">
         {/* Network Panel */}
         <div className="max-w-lg mx-auto bg-charcoal border border-violet/40 rounded-md p-3 shadow-md">
           <div className="flex items-center justify-between mb-2 border-b border-violet/20 pb-1">
             <div className="flex items-center">
               <div className="h-3 w-3 rounded-full led-teal mr-2 animate-pulse"></div>
-              <p className="text-teal text-xs font-mono">NETWORK STATUS</p>
+              <p className="text-teal text-xs font-mono">CLUB STATUS</p>
             </div>
             <div className="text-xs text-offwhite/60 font-mono">{new Date().toISOString().split('T')[0]}</div>
           </div>
@@ -55,23 +55,23 @@ const Footer = () => {
               <div className="text-offwhite/80 text-xs font-mono mb-1 border-b border-violet/20 pb-0.5">Social</div>
               <NetworkLink href="https://www.linkedin.com/company/data-science-club-wmu/" label="LinkedIn" color="blue" />
               <NetworkLink href="https://www.instagram.com/wmudatascience" label="Instagram" color="pink" />
-              <NetworkLink href="#" label="Discord" color="violet" />
+              <NetworkLink href="https://experiencewmu.wmich.edu/organization/datascienceclub" label="ExperienceWMU" color="brown" />
             </div>
             
             <div>
               <div className="text-offwhite/80 text-xs font-mono mb-1 border-b border-violet/20 pb-0.5">Development</div>
               <NetworkLink href="https://github.com/Data-Science-Club-at-WMU" label="GitHub" />
               <NetworkLink href="#" label="Projects" color="blue" />
-              <NetworkLink href="mailto:wmu.datascienceclub@gmail.com" label="Contact" color="pink" />
+              <NetworkLink href="mailto:wmu.datascienceclub@gmail.com" label="Contact" color="orange" />
             </div>
             
             <div className="col-span-2 sm:col-span-1">
               <div className="text-offwhite/80 text-xs font-mono mb-1 border-b border-violet/20 pb-0.5">Navigation</div>
               <div className="grid grid-cols-2 sm:block">
-                <NetworkLink href="#about" label="About" />
-                <NetworkLink href="#events" label="Events" />
-                <NetworkLink href="#resources" label="Resources" />
-                <NetworkLink href="#team" label="Team" />
+                <NetworkLink href="#about" label="Home" />
+                <NetworkLink href="#events" label="Projects" />
+                <NetworkLink href="#resources" label="Calendar" />
+                <NetworkLink href="#team" label="Join" />
               </div>
             </div>
           </div>

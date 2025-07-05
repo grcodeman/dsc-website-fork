@@ -12,6 +12,8 @@
   --blue: #00A3FF;
   --pink: #FF00D6;
   --green: #00FF66;
+  --brown: #8B4513;
+  --orange: #FFA500;
   --offwhite: #E5E5E5;
   
   /* Typography */
@@ -68,6 +70,16 @@ body {
 .led-green {
   background-color: var(--green);
   box-shadow: 0 0 4px 1px var(--green);
+}
+
+.led-brown {
+  background-color: var(--brown);
+  box-shadow: 0 0 4px 1px var(--brown);
+}
+
+.led-orange {
+  background-color: var(--orange);
+  box-shadow: 0 0 4px 1px var(--orange);
 }
 
 .led-inactive {

@@ -94,10 +94,10 @@ const Resources = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Python Data Science Tutorial */}
           <FlipCard 
-            title="Python Data Science Tutorial" 
+            title="Python DSC Onboarding Repo" 
             description="Learn essential Python tools for data science including NumPy, Pandas, Matplotlib and Scikit-Learn."
             buttonText="View on GitHub"
-            buttonLink="https://github.com/jakevdp/PythonDataScienceHandbook"
+            buttonLink="https://github.com/Data-Science-Club-at-WMU/Python-Data-Science-Onboarding"
             color="teal"
             emoji="🐍"
             linkType="github"
@@ -107,11 +107,11 @@ const Resources = () => {
           <FlipCard 
             title="Machine Learning Tutorials" 
             description="Explore machine learning concepts and techniques through hands-on tutorials and practical examples."
-            buttonText="Download PDF"
-            buttonLink="#"
+            buttonText="View on GitHub"
+            buttonLink="https://github.com/Data-Science-Club-at-WMU/Machine-Learning-Tutorials"
             color="violet"
             emoji="🤖"
-            linkType="pdf"
+            linkType="github"
           />
         </div>
       </div>

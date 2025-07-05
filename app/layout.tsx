@@ -20,6 +20,10 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Data Science Club at WMU",
   description: "Student club at WMU focused on Data Science, AI and ML",
+  icons: {
+    icon: "/dsc_logo.jpeg",
+    apple: "/dsc_logo.jpeg",
+  },
 };
 
 export default function RootLayout({
