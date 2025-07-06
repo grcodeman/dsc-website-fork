@@ -63,7 +63,7 @@ const NetworkLink = ({
   color?: string;
 }) => {
   return (
-    <div className="flex items-center mb-1.5">
+    <div className="flex items-center mb-1.5 relative z-20">
       <LED active={active} color={color} pulse={Math.random() > 0.7} />
       <a 
         href={href}
@@ -203,7 +203,7 @@ const Footer = () => {
             <div className="text-xs text-offwhite/60 font-mono">{new Date().toISOString().split('T')[0]}</div>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 relative z-20">
             <div>
               <div className="text-offwhite/80 text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5">Social</div>
               <NetworkLink href="https://www.linkedin.com/company/data-science-club-wmu/" label="LinkedIn" color="blue" />
