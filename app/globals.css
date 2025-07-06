@@ -46,6 +46,14 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* Container with max-width constraint */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* LED indicator glow effects */
 .led-teal {
   background-color: var(--teal);
