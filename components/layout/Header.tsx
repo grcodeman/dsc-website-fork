@@ -26,9 +26,9 @@ const Header = () => {
           <div className="font-heading text-xl tracking-widest text-teal">DSC @ WMU</div>
         </Link>
         <nav className="hidden md:flex space-x-8">
-          <a href="#projects" className="hover:text-teal transition-colors">Projects</a>
-          <a href="#calendar" className="hover:text-teal transition-colors">Calendar</a>
-          <a href="#join" className="hover:text-teal transition-colors">Join</a>
+          <a href="/projects" className="hover:text-teal transition-colors">Projects</a>
+          <a href="/calendar" className="hover:text-teal transition-colors">Calendar</a>
+          <a href="/join" className="hover:text-teal transition-colors">Join</a>
         </nav>
         <button 
           onClick={toggleMobileMenu} 
@@ -61,7 +61,7 @@ const Header = () => {
           <div className="mx-auto rounded-2xl backdrop-blur-md bg-white/10 shadow-lg border border-white/20 overflow-hidden">
             <nav className="flex flex-col divide-y divide-white/5">
               <a 
-                href="#projects" 
+                href="/projects" 
                 className="px-6 py-3 text-offwhite hover:text-teal hover:bg-violet/10 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
