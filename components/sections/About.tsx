@@ -51,7 +51,7 @@ const About = () => {
         </h2>
         
         {/* Content Section - Mobile: stacked, Desktop: side-by-side */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 md:items-center">
           {/* Text Content */}
           <div className="order-1 p-8">
             <h3 className="text-2xl font-heading mb-6 text-teal">Our Mission</h3>
@@ -71,7 +71,7 @@ const About = () => {
           </div>
           
           {/* Image Gallery */}
-          <div className="order-2 h-[350px] bg-charcoal/30 rounded-lg overflow-hidden">
+          <div className="order-2 h-[350px] bg-charcoal/30 rounded-lg overflow-hidden flex items-center justify-center">
             <ImageGallery />
           </div>
         </div>
