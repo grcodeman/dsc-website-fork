@@ -45,13 +45,15 @@ const ImageGallery = () => {
 const About = () => {
   return (
     <section id="about" className="py-16 bg-charcoal/50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-violet">
           About Us
         </h2>
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Column - Mission Text */}
-          <div className="flex-1 p-8">
+        
+        {/* Content Section - Mobile: stacked, Desktop: side-by-side */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          {/* Text Content */}
+          <div className="order-1 p-8">
             <h3 className="text-2xl font-heading mb-6 text-teal">Our Mission</h3>
             <p className="text-offwhite/90 mb-4 leading-relaxed">
               At the Data Science Club, we&apos;re dedicated to exploring the frontiers of data science, machine learning, and artificial intelligence. 
@@ -68,11 +70,9 @@ const About = () => {
             </ul>
           </div>
           
-          {/* Right Column - Image Gallery */}
-          <div className="flex-1 bg-charcoal/30 rounded-lg border border-teal/20 flex flex-col">
-            <div className="flex-1 flex overflow-hidden rounded-lg">
-              <ImageGallery />
-            </div>
+          {/* Image Gallery */}
+          <div className="order-2 h-[350px] bg-charcoal/30 rounded-lg overflow-hidden">
+            <ImageGallery />
           </div>
         </div>
       </div>
