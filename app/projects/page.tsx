@@ -3,8 +3,8 @@ import Footer from "../../components/layout/Footer";
 import Projects from "../../components/sections/Projects";
 
 export const metadata = {
-  title: 'Projects | Data Science Club at WMU',
-  description: 'Explore current projects from the Data Science Club at Western Michigan University',
+  title: "Projects | Data Science Club at WMU",
+  description: "Explore current projects from the Data Science Club at Western Michigan University",
 };
 
 export default function ProjectsPage() {

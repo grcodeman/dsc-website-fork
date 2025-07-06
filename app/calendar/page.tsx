@@ -1,15 +1,15 @@
 "use client";
 
-import React from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import React from "react";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 type Event = {
   id: number;
   title: string;
   date: string;
   description: string;
-  color: 'teal' | 'violet';
+  color: "teal" | "violet";
 };
 
 const events: Event[] = [
@@ -52,10 +52,10 @@ const CalendarPage = () => {
           <h1 className="text-3xl md:text-4xl font-heading text-teal mb-8">Club Calendar</h1>
           
           <div className="bg-white/5 backdrop-filter backdrop-blur-md rounded-xl shadow-lg border border-white/10 p-4 mb-8">
-            <p className="text-offwhite mb-6">
-              Stay updated with all our upcoming events, meetings, and workshops.
-              View the full calendar below to plan your participation.
-            </p>
+              <p className="text-offwhite mb-6">
+                Stay updated with all our upcoming events, meetings, and workshops.
+                View the full calendar below to plan your participation.
+              </p>
             
             {/* Google Calendar Embed Placeholder */}
             <div className="relative w-full rounded-lg overflow-hidden">
@@ -77,10 +77,10 @@ const CalendarPage = () => {
                     <p>To embed your Google Calendar:</p>
                     <ol className="list-decimal list-inside mt-2">
                       <li>Go to your Google Calendar</li>
-                      <li>Click on Settings (gear icon) ➝ Settings</li>
+                      <li>Click on Settings (gear icon) &rarr; Settings</li>
                       <li>Select your calendar from the left sidebar</li>
-                      <li>Scroll to "Integrate calendar" section</li>
-                      <li>Copy the iframe code from "Embed code"</li>
+                      <li>Scroll to &quot;Integrate calendar&quot; section</li>
+                      <li>Copy the iframe code from &quot;Embed code&quot;</li>
                       <li>Replace this placeholder with that code</li>
                     </ol>
                   </div>
@@ -103,22 +103,22 @@ const CalendarPage = () => {
           
           <div className="bg-white/5 backdrop-filter backdrop-blur-md rounded-xl shadow-lg border border-white/10 p-6">
             <h2 className="text-2xl font-heading text-teal mb-4">Upcoming Events</h2>
-            <p className="text-offwhite mb-6">
-              Here are our key upcoming events. Check the calendar for full details and more events.
-            </p>
+              <p className="text-offwhite mb-6">
+                Here are our key upcoming events. Check the calendar for full details and more events.
+              </p>
             
             {/* Event Timeline */}
             <div className="relative pl-8 space-y-12">
               {/* Timeline Line */}
               <div className="absolute left-2.5 top-0 bottom-0 w-0.5 z-10" style={{
-                background: 'linear-gradient(to bottom, #00FFC3, #B200FF, #00FFC3)'
+                background: "linear-gradient(to bottom, #00FFC3, #B200FF, #00FFC3)"
               }}></div>
               
               {/* Event Items */}
               {events.map((event) => {
-                const colorValue = event.color === 'teal' ? '#00FFC3' : '#B200FF';
-                const colorValueTransparent = event.color === 'teal' ? 'rgba(0, 255, 195, 0.1)' : 'rgba(178, 0, 255, 0.1)';
-                const colorValueBorder = event.color === 'teal' ? 'rgba(0, 255, 195, 0.3)' : 'rgba(178, 0, 255, 0.3)';
+                const colorValue = event.color === "teal" ? "#00FFC3" : "#B200FF";
+                const colorValueTransparent = event.color === "teal" ? "rgba(0, 255, 195, 0.1)" : "rgba(178, 0, 255, 0.1)";
+                const colorValueBorder = event.color === "teal" ? "rgba(0, 255, 195, 0.3)" : "rgba(178, 0, 255, 0.3)";
                 
                 return (
                   <div key={event.id} className="group relative mb-12 last:mb-0">

@@ -10,7 +10,7 @@ export default function JoinPage() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-teal font-heading">Join DSC @ WMU</h1>
           <p className="text-xl mb-8">
-            Thank you for your interest in joining Data Science Club! We're super excited to get you started on the process for joining the club.
+            Thank you for your interest in joining Data Science Club! We&apos;re super excited to get you started on the process for joining the club.
           </p>
 
           <div className="space-y-12">
@@ -44,10 +44,10 @@ export default function JoinPage() {
               </div>
               <p className="mb-4">
                 DSC hosts a kick-off event at the beginning of each semester. Join us to learn more about our club, 
-                what we do, and the available projects. You'll also have the opportunity to ask questions you may have about joining.
+                what we do, and the available projects. You&apos;ll also have the opportunity to ask questions you may have about joining.
               </p>
               <p className="mb-4">
-                Don't worry if you can't make it - all the information will be available online afterward.
+                Don&apos;t worry if you can&apos;t make it - all the information will be available online afterward.
               </p>
               <div className="mt-4 flex flex-wrap gap-4">
                 <a 
@@ -100,7 +100,7 @@ export default function JoinPage() {
               </div>
               <p className="mb-4">
                 As a final step to join the club, you must submit your completed tutorial work certifying that 
-                you've completed the fundamental requirements to join the club.
+                you&apos;ve completed the fundamental requirements to join the club.
               </p>
               <p className="mb-4">
                 This proves you are ready and know the basics before joining one of our research projects. 
@@ -124,7 +124,7 @@ export default function JoinPage() {
               </div>
               <p className="mb-4">
                 Meet with project leads at a weekly workshop and get onboarded onto a project. This is where 
-                the real fun begins! You'll join one of our ongoing research projects based on your interests 
+                the real fun begins! You&apos;ll join one of our ongoing research projects based on your interests 
                 and skill level.
               </p>
               <p className="mb-4">
@@ -164,7 +164,7 @@ export default function JoinPage() {
               
               <div>
                 <h3 className="text-xl font-bold mb-2 text-violet">Can I join mid-semester?</h3>
-                <p>Yes! While it's ideal to join at the beginning of the semester, we accept new members throughout the year.</p>
+                <p>Yes! While it&apos;s ideal to join at the beginning of the semester, we accept new members throughout the year.</p>
               </div>
               
               <div>
