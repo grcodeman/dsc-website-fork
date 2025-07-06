@@ -13,7 +13,7 @@ type Event = {
 const events: Event[] = [
   {
     id: 1,
-    title: "Data Science Kickoff Fall 2025",
+    title: "Data Kickoff Fall 2025",
     date: "TBA",
     description: "Kicking off the semester with an info session! Students can join projects and meet other members.",
     color: "teal",
@@ -27,7 +27,7 @@ const events: Event[] = [
   },
   {
     id: 3,
-    title: "Data Science Kickoff Spring 2026",
+    title: "Data Kickoff Spring 2026",
     date: "TBA",
     description: "Kicking off the semester with an info session! Students can join projects and meet other members.",
     color: "teal",
