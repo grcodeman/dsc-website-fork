@@ -68,14 +68,14 @@ const Header = () => {
                 Projects
               </a>
               <a 
-                href="#calendar" 
+                href="/calendar" 
                 className="px-6 py-3 text-offwhite hover:text-teal hover:bg-violet/10 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Calendar
               </a>
               <a 
-                href="#join" 
+                href="/join" 
                 className="px-6 py-3 text-offwhite hover:text-teal hover:bg-violet/10 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
