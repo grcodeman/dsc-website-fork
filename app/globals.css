@@ -103,3 +103,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.75em;
   font-weight: 700;
 }
+
+/* Custom hover class for footer links to ensure they always stay light-colored */
+.hover-teal-custom {
+  transition: color 0.2s ease;
+}
+
+.hover-teal-custom:hover {
+  color: #00FFC3 !important;
+}

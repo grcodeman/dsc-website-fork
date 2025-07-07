@@ -62,15 +62,16 @@ const NetworkLink = ({
   active?: boolean;
   color?: string;
 }) => {
+  // Get the LED color - this stays the same
+  const ledColor = color;
+  
   return (
     <div className="flex items-center mb-1.5 relative z-20">
-      <LED active={active} color={color} pulse={Math.random() > 0.7} />
+      <LED active={active} color={ledColor} pulse={Math.random() > 0.7} />
       <a 
         href={href}
-        className="text-xs font-mono flex items-center"
+        className="text-xs font-mono flex items-center hover-teal-custom"
         style={{ color: '#E5E5E5' }}
-        onMouseOver={(e) => e.currentTarget.style.color = '#00FFC3'}
-        onMouseOut={(e) => e.currentTarget.style.color = '#E5E5E5'}
         target="_blank"
         rel="noopener noreferrer"
       >
