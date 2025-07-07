@@ -62,12 +62,16 @@ const NetworkLink = ({
   active?: boolean;
   color?: string;
 }) => {
+  // Get the LED color - this stays the same
+  const ledColor = color;
+  
   return (
     <div className="flex items-center mb-1.5 relative z-20">
-      <LED active={active} color={color} pulse={Math.random() > 0.7} />
+      <LED active={active} color={ledColor} pulse={Math.random() > 0.7} />
       <a 
         href={href}
-        className="text-xs text-offwhite/90 font-mono hover:text-teal transition-colors flex items-center"
+        className="text-xs font-mono flex items-center hover-teal-custom"
+        style={{ color: '#E5E5E5' }}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -128,7 +132,7 @@ const ICChip = ({ className = '' }: { className?: string }) => (
 
 const Footer = () => {
   return (
-    <footer className="mt-auto py-6 relative overflow-hidden" style={{ backgroundColor: '#0a1c0a' }}>
+    <footer className="mt-auto py-6 relative overflow-hidden" style={{ backgroundColor: '#0a1c0a', color: '#E5E5E5' }}>
       {/* Circuit Board Background - Main green PCB */}
       <div className="absolute inset-0 z-0" style={{ backgroundColor: '#0d280d', opacity: 0.7 }}>
         {/* Background grid pattern */}
@@ -198,28 +202,28 @@ const Footer = () => {
           <div className="flex items-center justify-between mb-2 border-b border-green-500/20 pb-1 relative z-10">
             <div className="flex items-center">
               <div className="h-3 w-3 rounded-full led-teal mr-2 animate-pulse"></div>
-              <p className="text-teal text-xs font-mono">CLUB STATUS</p>
+              <p className="text-xs font-mono" style={{ color: '#00FFC3' }}>CLUB STATUS</p>
             </div>
-            <div className="text-xs text-offwhite/60 font-mono">{new Date().toISOString().split('T')[0]}</div>
+            <div className="text-xs font-mono" style={{ color: '#E5E5E5' }}>{new Date().toISOString().split('T')[0]}</div>
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 relative z-20">
             <div>
-              <div className="text-offwhite/80 text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5">Social</div>
+              <div className="text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5" style={{ color: '#E5E5E5' }}>Social</div>
               <NetworkLink href="https://www.linkedin.com/company/data-science-club-wmu/" label="LinkedIn" color="blue" />
               <NetworkLink href="https://www.instagram.com/wmudatascience" label="Instagram" color="pink" />
               <NetworkLink href="https://experiencewmu.wmich.edu/organization/datascienceclub" label="ExperienceWMU" color="brown" />
             </div>
             
             <div>
-              <div className="text-offwhite/80 text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5">Development</div>
+              <div className="text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5" style={{ color: '#E5E5E5' }}>Development</div>
               <NetworkLink href="https://github.com/Data-Science-Club-at-WMU" label="GitHub" />
               <NetworkLink href="#" label="Projects" color="blue" />
               <NetworkLink href="mailto:wmu.datascienceclub@gmail.com" label="Contact" color="orange" />
             </div>
             
             <div className="col-span-2 sm:col-span-1">
-              <div className="text-offwhite/80 text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5">Navigation</div>
+              <div className="text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5" style={{ color: '#E5E5E5' }}>Navigation</div>
               <div className="grid grid-cols-2 sm:block">
                 <NetworkLink href="#about" label="Home" />
                 <NetworkLink href="#events" label="Projects" />
@@ -229,12 +233,12 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="border-t border-green-500/30 mt-3 pt-2 text-center text-offwhite/50 text-xs font-mono relative z-10">
+          <div className="border-t border-green-500/30 mt-3 pt-2 text-center text-xs font-mono relative z-10" style={{ color: '#E5E5E5' }}>
             <p>© {new Date().getFullYear()} Data Science Club at WMU</p>
             <div className="text-[10px] mt-0.5 flex items-center justify-center">
-              <span className="mr-1">System Status:</span>
+              <span className="mr-1" style={{ color: '#E5E5E5' }}>System Status:</span>
               <LED active={true} pulse={true} />
-              <span className="text-teal/80">Online</span>
+              <span style={{ color: '#00FFC3' }}>Online</span>
             </div>
           </div>
         </div>

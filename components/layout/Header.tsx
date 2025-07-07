@@ -26,9 +26,9 @@ const Header = () => {
           <div className="font-heading text-xl tracking-widest text-teal">DSC @ WMU</div>
         </Link>
         <nav className="hidden md:flex space-x-8">
-          <a href="/projects" className="hover:text-teal transition-colors">Projects</a>
-          <a href="/calendar" className="hover:text-teal transition-colors">Calendar</a>
-          <a href="/join" className="hover:text-teal transition-colors">Join</a>
+          <a href="/projects" className="hover-teal-custom transition-colors" style={{ color: '#E5E5E5' }}>Projects</a>
+          <a href="/calendar" className="hover-teal-custom transition-colors" style={{ color: '#E5E5E5' }}>Calendar</a>
+          <a href="/join" className="hover-teal-custom transition-colors" style={{ color: '#E5E5E5' }}>Join</a>
         </nav>
         <button 
           onClick={toggleMobileMenu} 
@@ -62,21 +62,24 @@ const Header = () => {
             <nav className="flex flex-col divide-y divide-white/5">
               <a 
                 href="/projects" 
-                className="px-6 py-3 text-offwhite hover:text-teal hover:bg-violet/10 transition-colors"
+                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors"
+                style={{ color: '#E5E5E5' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Projects
               </a>
               <a 
                 href="/calendar" 
-                className="px-6 py-3 text-offwhite hover:text-teal hover:bg-violet/10 transition-colors"
+                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors"
+                style={{ color: '#E5E5E5' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Calendar
               </a>
               <a 
                 href="/join" 
-                className="px-6 py-3 text-offwhite hover:text-teal hover:bg-violet/10 transition-colors"
+                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors"
+                style={{ color: '#E5E5E5' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Join
