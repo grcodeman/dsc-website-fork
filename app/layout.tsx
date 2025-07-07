@@ -21,8 +21,14 @@ export const metadata: Metadata = {
   title: "Data Science Club at WMU",
   description: "Student club at WMU focused on Data Science, AI and ML",
   icons: {
-    icon: "/dsc_logo.jpeg",
-    apple: "/dsc_logo.jpeg",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/dsc_logo.jpeg", type: "image/jpeg" },
+    ],
+    shortcut: "/favicon.png",
+    apple: [
+      { url: "/dsc_logo.jpeg", sizes: "180x180", type: "image/jpeg" },
+    ],
   },
 };
 
