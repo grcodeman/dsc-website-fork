@@ -23,16 +23,16 @@ const Header = () => {
               className="object-cover"
             />
           </div>
-          <div className="font-heading text-xl tracking-widest text-teal">DSC @ WMU</div>
+          <div className="font-heading text-xl tracking-widest text-black dark:text-white">DSC @ WMU</div>
         </Link>
         <nav className="hidden md:flex space-x-8">
-          <a href="/projects" className="hover-teal-custom transition-colors" style={{ color: '#E5E5E5' }}>Projects</a>
-          <a href="/calendar" className="hover-teal-custom transition-colors" style={{ color: '#E5E5E5' }}>Calendar</a>
-          <a href="/join" className="hover-teal-custom transition-colors" style={{ color: '#E5E5E5' }}>Join</a>
+          <a href="/projects" className="hover-teal-custom transition-colors text-black dark:text-white">Projects</a>
+          <a href="/calendar" className="hover-teal-custom transition-colors text-black dark:text-white">Calendar</a>
+          <a href="/join" className="hover-teal-custom transition-colors text-black dark:text-white">Join</a>
         </nav>
         <button 
           onClick={toggleMobileMenu} 
-          className="md:hidden flex items-center gap-2 text-offwhite hover:text-teal transition-colors"
+          className="md:hidden flex items-center gap-2 text-black dark:text-white hover:text-teal transition-colors"
           aria-label="Toggle mobile menu"
         >
           <span>Menu</span>
@@ -62,24 +62,21 @@ const Header = () => {
             <nav className="flex flex-col divide-y divide-white/5">
               <a 
                 href="/projects" 
-                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors"
-                style={{ color: '#E5E5E5' }}
+                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors text-black dark:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Projects
               </a>
               <a 
                 href="/calendar" 
-                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors"
-                style={{ color: '#E5E5E5' }}
+                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors text-black dark:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Calendar
               </a>
               <a 
                 href="/join" 
-                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors"
-                style={{ color: '#E5E5E5' }}
+                className="px-6 py-3 hover-teal-custom hover:bg-violet/10 transition-colors text-black dark:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Join
