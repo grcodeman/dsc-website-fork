@@ -27,7 +27,7 @@ export default function JoinPage() {
               <div className="mt-4">
                 <a 
                   href="#" 
-                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 transition-colors"
+                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 hover:scale-105 hover:shadow-lg transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -52,13 +52,13 @@ export default function JoinPage() {
               <div className="mt-4 flex flex-wrap gap-4">
                 <a 
                   href="#" 
-                  className="inline-block px-6 py-3 bg-violet/20 text-offwhite rounded-md font-bold hover:bg-violet/30 transition-colors border border-violet/40"
+                  className="inline-block px-6 py-3 bg-violet/20 text-offwhite rounded-md font-bold hover:bg-violet/30 hover:scale-105 hover:shadow-lg hover:border-violet transition-all duration-300 border border-violet/40"
                 >
                   Event Details
                 </a>
                 <a 
                   href="#" 
-                  className="inline-block px-6 py-3 bg-violet/20 text-offwhite rounded-md font-bold hover:bg-violet/30 transition-colors border border-violet/40"
+                  className="inline-block px-6 py-3 bg-violet/20 text-offwhite rounded-md font-bold hover:bg-violet/30 hover:scale-105 hover:shadow-lg hover:border-violet transition-all duration-300 border border-violet/40"
                 >
                   Kick-Off Slides
                 </a>
@@ -83,7 +83,7 @@ export default function JoinPage() {
               <div className="mt-4">
                 <a 
                   href="https://github.com/Data-Science-Club-at-WMU" 
-                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 transition-colors"
+                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 hover:scale-105 hover:shadow-lg transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -109,7 +109,7 @@ export default function JoinPage() {
               <div className="mt-4">
                 <a 
                   href="#" 
-                  className="inline-block px-6 py-3 bg-violet/20 text-offwhite rounded-md font-bold hover:bg-violet/30 transition-colors border border-violet/40"
+                  className="inline-block px-6 py-3 bg-violet/20 text-offwhite rounded-md font-bold hover:bg-violet/30 hover:scale-105 hover:shadow-lg hover:border-violet transition-all duration-300 border border-violet/40"
                 >
                   Submission Form
                 </a>
@@ -133,13 +133,13 @@ export default function JoinPage() {
               <div className="mt-4 flex flex-wrap gap-4">
                 <a 
                   href="#" 
-                  className="inline-block px-6 py-3 bg-teal/20 text-offwhite rounded-md font-bold hover:bg-teal/30 transition-colors border border-teal/40"
+                  className="inline-block px-6 py-3 bg-teal/20 text-offwhite rounded-md font-bold hover:bg-teal/30 hover:scale-105 hover:shadow-lg hover:border-teal transition-all duration-300 border border-teal/40"
                 >
                   Workshop Schedule
                 </a>
                 <a 
                   href="/projects" 
-                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 transition-colors"
+                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 hover:scale-105 hover:shadow-lg transition-all duration-300"
                 >
                   View Projects
                 </a>
