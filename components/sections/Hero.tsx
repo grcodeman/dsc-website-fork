@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -141,9 +142,9 @@ const Hero = () => {
               <p className="text-xl md:text-2xl max-w-2xl mb-6">
                 WMU Student Community for Data Science and AI/ML
               </p>
-              <button className="bg-[rgb(0,230,170)] text-black font-heading px-8 py-3 rounded-md hover:bg-[rgb(0,230,170)]/80 transition-colors uppercase tracking-widest font-bold shadow-lg transform hover:scale-105 duration-300 border-2 border-[rgb(0,230,170)] cursor-pointer">
+              <Link href="/join" className="bg-[rgb(0,230,170)] text-black font-heading px-8 py-3 rounded-md hover:bg-[rgb(0,230,170)]/80 transition-colors uppercase tracking-widest font-bold shadow-lg transform hover:scale-105 duration-300 border-2 border-[rgb(0,230,170)] cursor-pointer inline-block text-center">
                 JOIN NOW
-              </button>
+              </Link>
             </div>
           </div>
         </div>
