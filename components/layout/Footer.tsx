@@ -225,10 +225,10 @@ const Footer = () => {
             <div className="col-span-2 sm:col-span-1">
               <div className="text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5" style={{ color: '#E5E5E5' }}>Navigation</div>
               <div className="grid grid-cols-2 sm:block">
-                <NetworkLink href="#about" label="Home" />
-                <NetworkLink href="#events" label="Projects" />
-                <NetworkLink href="#resources" label="Calendar" />
-                <NetworkLink href="#team" label="Join" />
+                <NetworkLink href="/" label="Home" />
+                <NetworkLink href="/projects" label="Projects" />
+                <NetworkLink href="/calendar" label="Calendar" />
+                <NetworkLink href="/join" label="Join" />
               </div>
             </div>
           </div>
