@@ -32,11 +32,7 @@ const FlipCard = ({ title, description, buttonText, buttonLink, color, emoji, li
             <p className="text-offwhite/80 text-sm line-clamp-2">{description}</p>
           </div>
           
-          <div className="absolute bottom-3 right-3">
-            <span className="text-xs bg-charcoal/50 py-1 px-2 rounded-full text-violet border border-violet/30">
-              Tutorial
-            </span>
-          </div>
+
         </div>
         
         {/* Back Side */}
@@ -44,12 +40,7 @@ const FlipCard = ({ title, description, buttonText, buttonLink, color, emoji, li
           <div className="text-3xl mb-2">{emoji}</div>
           <h3 className="text-lg font-heading mb-2 text-teal">{title}</h3>
           
-          {/* Resource type indicator */}
-          <div className="text-offwhite/80 text-xs mb-3 flex items-center gap-1">
-            <span className="px-2 py-1 rounded-full bg-charcoal/70 border border-teal/30">
-              {linkType === 'github' ? 'GitHub Repository' : 'PDF Document'}
-            </span>
-          </div>
+
           
           <a 
             href={buttonLink}
