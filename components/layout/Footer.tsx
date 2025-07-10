@@ -65,6 +65,9 @@ const NetworkLink = ({
   // Get the LED color - this stays the same
   const ledColor = color;
   
+  // Check if the link is external (starts with http or mailto:)
+  const isExternal = href.startsWith('http') || href.startsWith('mailto:');
+  
   return (
     <div className="flex items-center mb-1.5 relative z-20">
       <LED active={active} color={ledColor} pulse={Math.random() > 0.7} />
@@ -72,8 +75,10 @@ const NetworkLink = ({
         href={href}
         className="text-xs font-mono flex items-center hover-teal-custom"
         style={{ color: '#E5E5E5' }}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(isExternal && {
+          target: "_blank",
+          rel: "noopener noreferrer"
+        })}
       >
         {label}
       </a>
