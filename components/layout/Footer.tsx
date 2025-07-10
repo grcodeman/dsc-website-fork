@@ -65,6 +65,9 @@ const NetworkLink = ({
   // Get the LED color - this stays the same
   const ledColor = color;
   
+  // Check if the link is external (starts with http or mailto:)
+  const isExternal = href.startsWith('http') || href.startsWith('mailto:');
+  
   return (
     <div className="flex items-center mb-1.5 relative z-20">
       <LED active={active} color={ledColor} pulse={Math.random() > 0.7} />
@@ -72,8 +75,10 @@ const NetworkLink = ({
         href={href}
         className="text-xs font-mono flex items-center hover-teal-custom"
         style={{ color: '#E5E5E5' }}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(isExternal && {
+          target: "_blank",
+          rel: "noopener noreferrer"
+        })}
       >
         {label}
       </a>
@@ -225,10 +230,10 @@ const Footer = () => {
             <div className="col-span-2 sm:col-span-1">
               <div className="text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5" style={{ color: '#E5E5E5' }}>Navigation</div>
               <div className="grid grid-cols-2 sm:block">
-                <NetworkLink href="#about" label="Home" />
-                <NetworkLink href="#events" label="Projects" />
-                <NetworkLink href="#resources" label="Calendar" />
-                <NetworkLink href="#team" label="Join" />
+                <NetworkLink href="/" label="Home" />
+                <NetworkLink href="/projects" label="Projects" />
+                <NetworkLink href="/calendar" label="Calendar" />
+                <NetworkLink href="/join" label="Join" />
               </div>
             </div>
           </div>

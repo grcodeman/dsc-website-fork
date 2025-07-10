@@ -26,7 +26,7 @@ export default function JoinPage() {
               </p>
               <div className="mt-4">
                 <a 
-                  href="#" 
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdqKjMGc4BOHoqyErFzwrd7XoznudrPDSKupVVv0UBh-CReUA/viewform?usp=dialog" 
                   className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 hover:scale-105 hover:shadow-lg transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
