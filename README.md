@@ -2,11 +2,11 @@
 
 # DSC Website
 
-This is the official website for our Developer Student Club built with Next.js, React, TypeScript, and Tailwind CSS.
+This is the official website for the Data Science & AI Club at WMU, built with Next.js, React, TypeScript, and Tailwind CSS.
 
 ## About
 
-This website showcases our club's projects, events, and provides information about our team. It's built using Next.js 14 with the App Router for optimized performance and SEO.
+This website showcases our club's projects, events, and provides information about our team. It's built using Next.js 15 with the App Router for optimized performance and SEO.
 
 ## Features
 
