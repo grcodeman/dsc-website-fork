@@ -1,26 +1,29 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 interface TeamMember {
   id: number;
   name: string;
   role: string;
   initials: string;
+  image?: string; // Optional profile image URL
 }
 
 const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: "TBA",
+    name: "Cody Thornell",
     role: "President",
-    initials: "1",
+    initials: "CT",
+    image: "/pfp/cody.webp",
   },
   {
     id: 2,
-    name: "TBA",
+    name: "Aiden Kim",
     role: "Vice President",
-    initials: "2",
+    initials: "AK",
   },
   {
     id: 3,
@@ -67,10 +70,20 @@ const Team = () => {
               <div key={member.id} className="flex flex-col items-center">
                 {/* Avatar circle */}
                 <div className="relative z-10 mb-6">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-violet/40 to-teal/30 flex items-center justify-center border-2 border-teal/30 shadow-lg">
-                    <span className="text-xl font-heading text-offwhite">
-                      {member.initials}
-                    </span>
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-violet/40 to-teal/30 flex items-center justify-center border-2 border-teal/30 shadow-lg overflow-hidden">
+                    {member.image ? (
+                      <Image 
+                        src={member.image}
+                        alt={`${member.name}'s profile picture`}
+                        width={80}
+                        height={80}
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <span className="text-xl font-heading text-offwhite">
+                        {member.initials}
+                      </span>
+                    )}
                   </div>
                   
                   {/* Connecting dot on line - visible on larger screens */}
