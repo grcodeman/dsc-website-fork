@@ -13,33 +13,39 @@ const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "TBA",
-    role: "Faculty Advisor",
+    role: "President",
     initials: "1",
   },
   {
     id: 2,
     name: "TBA",
-    role: "President",
+    role: "Vice President",
     initials: "2",
   },
   {
     id: 3,
     name: "TBA",
-    role: "Vice President",
+    role: "Finance Director",
     initials: "3",
   },
   {
     id: 4,
     name: "TBA",
-    role: "Treasurer",
+    role: "Marketing Director",
     initials: "4",
   },
   {
     id: 5,
     name: "TBA",
-    role: "Secretary",
+    role: "Event Director",
     initials: "5",
   },
+  {
+    id: 6,
+    name: "TBA",
+    role: "Research Director",
+    initials: "6",
+  }
 ];
 
 const Team = () => {
@@ -47,7 +53,7 @@ const Team = () => {
     <section id="team" className="py-16 bg-charcoal/50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-violet">
-          Our Team
+          Club Officers
         </h2>
         
         {/* Team layout with connecting lines */}
