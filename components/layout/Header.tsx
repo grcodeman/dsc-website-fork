@@ -18,12 +18,12 @@ const Header = () => {
           <div className="relative w-8 h-8 overflow-hidden rounded-full border border-violet/30">
             <Image 
               src="/dsc_logo.jpeg" 
-              alt="DSC Logo" 
+              alt="DSAIC Logo" 
               fill 
               className="object-cover"
             />
           </div>
-          <div className="font-heading text-xl tracking-widest text-black dark:text-white">DSC @ WMU</div>
+          <div className="font-heading text-xl tracking-widest text-black dark:text-white">DSAIC @ WMU</div>
         </Link>
         <nav className="hidden md:flex space-x-8">
           <a href="/projects" className="hover-teal-custom transition-colors text-black dark:text-white">Projects</a>
