@@ -20,23 +20,23 @@ const events: Event[] = [
   },
   {
     id: 2,
-    title: "Company Tour",
+    title: "Bi-weekly workshops",
     date: "TBA",
-    description: "Currently in the works, stay tuned!",
+    description: "Project teams will meet on a biweekly schedule to work on their projects.",
     color: "violet",
   },
   {
     id: 3,
-    title: "Data Kickoff Spring 2026",
+    title: "Company Tour",
     date: "TBA",
-    description: "Kicking off the semester with an info session! Students can join projects and meet other members.",
+    description: "Currently in the works, stay tuned!",
     color: "teal",
   },
   {
     id: 4,
-    title: "Stryker Company Tour",
+    title: "Project Ceremony Fall 2025",
     date: "TBA",
-    description: "Visiting Stryker to learn about their industry usage of data science and ai.",
+    description: "Students will showcase their projects and receive awards for their hard work.",
     color: "violet",
   },
 ];
@@ -82,7 +82,7 @@ const EventsTimeline = () => {
     <section id="events" className="py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-violet">
-          Key Events
+          Schedule
         </h2>
         <div className="relative max-w-2xl mx-auto pl-8">
           {/* Timeline Line */}
