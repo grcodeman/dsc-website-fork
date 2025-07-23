@@ -24,30 +24,31 @@ const teamMembers: TeamMember[] = [
     name: "Aiden Kim",
     role: "Vice President",
     initials: "AK",
+    image: "/pfp/aiden.webp",
   },
   {
     id: 3,
-    name: "TBA",
+    name: "Caden Carr",
     role: "Finance Director",
-    initials: "3",
+    initials: "CC",
   },
   {
     id: 4,
-    name: "TBA",
+    name: "Rafia Authoi",
     role: "Marketing Director",
-    initials: "4",
+    initials: "RA",
   },
   {
     id: 5,
-    name: "TBA",
-    role: "Event Director",
-    initials: "5",
+    name: "Michael Osei",
+    role: "Research Director",
+    initials: "MO",
   },
   {
     id: 6,
     name: "TBA",
-    role: "Research Director",
-    initials: "6",
+    role: "Event Director",
+    initials: "x",
   }
 ];
 
@@ -56,7 +57,7 @@ const Team = () => {
     <section id="team" className="py-16 bg-charcoal/50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-violet">
-          Club Officers
+          Club Eboard
         </h2>
         
         {/* Team layout with connecting lines */}
