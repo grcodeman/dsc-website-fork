@@ -81,7 +81,7 @@ const EventsTimeline = () => {
   return (
     <section id="events" className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-purple-700 dark:text-violet">
+        <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-violet">
           Key Events
         </h2>
         <div className="relative max-w-2xl mx-auto pl-8">
