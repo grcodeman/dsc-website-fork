@@ -50,7 +50,7 @@ const EventCard = ({ event }: { event: Event }) => {
   
   // Base style classes
   const nodeBaseClasses = "absolute left-0 w-5 h-5 rounded-full z-20 group-hover:scale-150 transition-transform duration-300 ease-out border-2 dark:border-charcoal border-white";
-  const cardBaseClasses = "ml-12 bg-white/80 dark:bg-charcoal/30 rounded-lg overflow-hidden transition-all duration-300 ease-out transform origin-left group-hover:scale-105";
+  const cardBaseClasses = "ml-12 bg-white/80 dark:bg-charcoal rounded-lg overflow-hidden transition-all duration-300 ease-out transform origin-left group-hover:scale-105";
   const headerBaseClasses = "px-4 py-3 border-b";
 
 
@@ -69,8 +69,8 @@ const EventCard = ({ event }: { event: Event }) => {
         </div>
         
         {/* Description - hidden until hover */}
-        <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300 ease-out">
-          <p className="p-4 text-gray-700 dark:text-offwhite/80">{event.description}</p>
+        <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300 ease-out bg-white dark:bg-gray-300/20">
+          <p className="p-4 text-gray-700">{event.description}</p>
         </div>
       </div>
     </div>
