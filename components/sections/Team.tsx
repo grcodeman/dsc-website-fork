@@ -27,6 +27,7 @@ const teamMembers: TeamMember[] = [
     role: "Vice President",
     initials: "AK",
     image: "/pfp/aiden.webp",
+    linkedin: "https://www.linkedin.com/in/aiden-kim-531107249/",
   },
   {
     id: 3,
@@ -34,6 +35,7 @@ const teamMembers: TeamMember[] = [
     role: "Research Director",
     initials: "MO",
     image: "/pfp/michael.webp",
+    linkedin: "https://www.linkedin.com/in/michael-osei-1st-91714753/",
   },
   {
     id: 4,
@@ -41,6 +43,7 @@ const teamMembers: TeamMember[] = [
     role: "Finance Director",
     initials: "CC",
     image: "/pfp/caden.webp",
+    linkedin: "https://www.linkedin.com/in/caden-carr/",
   },
   {
     id: 5,
@@ -48,6 +51,7 @@ const teamMembers: TeamMember[] = [
     role: "Marketing Director",
     initials: "RA",
     image: "/pfp/rafia.webp",
+    linkedin: "https://www.linkedin.com/in/rafia-authoi/",
   },
   {
     id: 6,
