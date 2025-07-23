@@ -28,27 +28,27 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 3,
-    name: "Caden Carr",
-    role: "Finance Director",
-    initials: "CC",
-  },
-  {
-    id: 4,
-    name: "Rafia Authoi",
-    role: "Marketing Director",
-    initials: "RA",
-  },
-  {
-    id: 5,
     name: "Michael Osei",
     role: "Research Director",
     initials: "MO",
   },
   {
+    id: 4,
+    name: "Caden Carr",
+    role: "Finance Director",
+    initials: "CC",
+  },
+  {
+    id: 5,
+    name: "Rafia Authoi",
+    role: "Marketing Director",
+    initials: "RA",
+  },
+  {
     id: 6,
-    name: "TBA",
+    name: "TBD",
     role: "Event Director",
-    initials: "x",
+    initials: "EV",
   }
 ];
 
