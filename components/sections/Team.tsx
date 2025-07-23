@@ -31,18 +31,21 @@ const teamMembers: TeamMember[] = [
     name: "Michael Osei",
     role: "Research Director",
     initials: "MO",
+    image: "/pfp/michael.webp",
   },
   {
     id: 4,
     name: "Caden Carr",
     role: "Finance Director",
     initials: "CC",
+    image: "/pfp/caden.webp",
   },
   {
     id: 5,
     name: "Rafia Authoi",
     role: "Marketing Director",
     initials: "RA",
+    image: "/pfp/rafia.webp",
   },
   {
     id: 6,
