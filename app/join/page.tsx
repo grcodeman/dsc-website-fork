@@ -154,12 +154,12 @@ export default function JoinPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold mb-2 text-violet">Do I need prior experience?</h3>
-                <p>No prior experience is required! Our tutorials are designed to teach you the basics, and we welcome members of all skill levels.</p>
+                <p>No prior experience is required! Our tutorials are designed to teach you the basics, and we welcome members of all skill levels and majors.</p>
               </div>
               
               <div>
                 <h3 className="text-xl font-bold mb-2 text-violet">How much time commitment is expected?</h3>
-                <p>We recommend dedicating 3-5 hours per week to club activities, including project work and learning.</p>
+                <p>We recommend dedicating 1-3 hours per week to club activities, including project work and learning.</p>
               </div>
               
               <div>

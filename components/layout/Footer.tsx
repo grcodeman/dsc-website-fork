@@ -224,7 +224,7 @@ const Footer = () => {
               <div className="text-xs font-mono mb-1 border-b border-green-500/20 pb-0.5" style={{ color: '#E5E5E5' }}>Development</div>
               <NetworkLink href="https://github.com/Data-Science-Club-at-WMU" label="GitHub" />
               <NetworkLink href="#" label="Projects" color="blue" />
-              <NetworkLink href="mailto:wmu.datascienceclub@gmail.com" label="Contact" color="orange" />
+              <NetworkLink href="mailto:cmd1231@wmich.edu" label="Contact" color="orange" />
             </div>
             
             <div className="col-span-2 sm:col-span-1">
