@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import '../styles/team-styles.css';
 
@@ -95,6 +95,54 @@ const teamMembers: TeamMember[] = [
 ];
 
 const Team = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftButton, setShowLeftButton] = useState(false);
+  const [showRightButton, setShowRightButton] = useState(true);
+
+  // Function to handle scroll left and right
+  const handleScroll = (direction: 'left' | 'right') => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollAmount = 300; // Amount to scroll in pixels
+      const targetScrollLeft = container.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+      container.scrollTo({
+        left: targetScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Function to check scroll position and update button visibility
+  const updateScrollButtons = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      // Show left button if we're not at the beginning
+      setShowLeftButton(container.scrollLeft > 10);
+      
+      // Show right button if we're not at the end
+      const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+      setShowRightButton(!isAtEnd);
+    }
+  };
+
+  // Listen for scroll events to update button visibility
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', updateScrollButtons);
+      // Initial check for button visibility
+      updateScrollButtons();
+      
+      // Also check on window resize as this may change the scroll width
+      window.addEventListener('resize', updateScrollButtons);
+
+      return () => {
+        container.removeEventListener('scroll', updateScrollButtons);
+        window.removeEventListener('resize', updateScrollButtons);
+      };
+    }
+  }, []);
+
   return (
     <section id="team" className="py-16 bg-charcoal/50">
       <div className="container mx-auto px-4">
@@ -104,8 +152,34 @@ const Team = () => {
         
         {/* Team layout with connecting lines */}
         <div className="relative mx-auto mb-16 overflow-hidden" style={{ maxWidth: '1200px' }}>
+          {/* Scroll left button */}
+          {showLeftButton && (
+            <button 
+              onClick={() => handleScroll('left')} 
+              className="scroll-button scroll-left-button"
+              aria-label="Scroll left"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
+
+          {/* Scroll right button */}
+          {showRightButton && (
+            <button 
+              onClick={() => handleScroll('right')} 
+              className="scroll-button scroll-right-button"
+              aria-label="Scroll right"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h17.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
+
           {/* Container with horizontal scroll */}
-          <div className="overflow-x-auto pb-4 hide-scrollbar">
+          <div ref={scrollContainerRef} className="overflow-x-auto pb-4 hide-scrollbar">
             {/* Connecting line - visible on larger screens */}
             <div className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-violet/20 via-teal/40 to-violet/20 top-16 z-0 hidden md:block" style={{ width: 'max-content', minWidth: '100%' }}></div>
             
