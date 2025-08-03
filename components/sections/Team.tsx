@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import '../styles/team-styles.css';
 
 interface TeamMember {
   id: number;
@@ -58,7 +59,31 @@ const teamMembers: TeamMember[] = [
     name: "TBD",
     role: "Event Director",
     initials: "EV",
-  }
+  },
+  {
+    id: 6,
+    name: "TBD",
+    role: "Event Director",
+    initials: "EV",
+  },
+  {
+    id: 6,
+    name: "TBD",
+    role: "Event Director",
+    initials: "EV",
+  },
+  {
+    id: 6,
+    name: "TBD",
+    role: "Event Director",
+    initials: "EV",
+  },
+  {
+    id: 6,
+    name: "TBD",
+    role: "Event Director",
+    initials: "EV",
+  },
 ];
 
 const Team = () => {
@@ -70,14 +95,16 @@ const Team = () => {
         </h2>
         
         {/* Team layout with connecting lines */}
-        <div className="relative mx-auto mb-16" style={{ maxWidth: '1200px' }}>
-          {/* Connecting line - visible on larger screens */}
-          <div className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-violet/20 via-teal/40 to-violet/20 top-16 z-0 hidden md:block"></div>
-          
-          {/* Team members */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-4 lg:gap-2 xl:gap-4">
+        <div className="relative mx-auto mb-16 overflow-hidden" style={{ maxWidth: '1200px' }}>
+          {/* Container with horizontal scroll */}
+          <div className="overflow-x-auto pb-4 hide-scrollbar">
+            {/* Connecting line - visible on larger screens */}
+            <div className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-violet/20 via-teal/40 to-violet/20 top-16 z-0 hidden md:block" style={{ width: 'max-content', minWidth: '100%' }}></div>
+            
+            {/* Team members */}
+            <div className="flex flex-row flex-nowrap min-w-full" style={{ width: 'max-content' }}>
             {teamMembers.map((member) => (
-              <div key={member.id} className="flex flex-col items-center">
+              <div key={member.id} className="flex flex-col items-center px-4 md:px-6 flex-shrink-0" style={{ width: '180px' }}>
                 {/* Avatar circle */}
                 <div className="relative z-10 mb-6">
                   {member.linkedin ? (
@@ -132,6 +159,7 @@ const Team = () => {
               </div>
             ))}
           
+            </div>
           </div>
         </div>
       </div>
