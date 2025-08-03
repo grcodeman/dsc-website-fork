@@ -1,7 +1,8 @@
 "use client";
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import '../styles/team-styles.css';
 
 interface TeamMember {
   id: number;
@@ -55,13 +56,93 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 6,
-    name: "TBD",
+    name: "Borsha Podder",
     role: "Event Director",
-    initials: "EV",
-  }
+    initials: "BP",
+    image: "/pfp/borsha.webp",
+    linkedin: "https://www.linkedin.com/in/borsha-podder-6971502b6/",
+  },
+  {
+    id: 7,
+    name: "Santhiya Venkatesh",
+    role: "Research Coordinator",
+    initials: "SV",
+    linkedin: "https://www.linkedin.com/in/vsanthiya/",
+  },
+  {
+    id: 8,
+    name: "Korey Colton",
+    role: "Finance Planner",
+    initials: "KC",
+    linkedin: "https://www.linkedin.com/in/korey-colton-a284b936a/",
+  },
+  {
+    id: 9,
+    name: "Yulia Baez",
+    role: "Social Coordinator",
+    initials: "YB",
+    image: "/pfp/yulia.webp",
+    linkedin: "https://www.linkedin.com/in/yulia-ildeliza-arias-baez-a5110a308/",
+  },
+  {
+    id: 10,
+    name: "Saad Mahmud",
+    role: "Event Coordinator",
+    initials: "SM",
+    image: "/pfp/saad.webp",
+    linkedin: "https://www.linkedin.com/in/saad-mahmud-/",
+  },
 ];
 
 const Team = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftButton, setShowLeftButton] = useState(false);
+  const [showRightButton, setShowRightButton] = useState(true);
+
+  // Function to handle scroll left and right
+  const handleScroll = (direction: 'left' | 'right') => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollAmount = 300; // Amount to scroll in pixels
+      const targetScrollLeft = container.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+      container.scrollTo({
+        left: targetScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Function to check scroll position and update button visibility
+  const updateScrollButtons = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      // Show left button if we're not at the beginning
+      setShowLeftButton(container.scrollLeft > 10);
+      
+      // Show right button if we're not at the end
+      const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+      setShowRightButton(!isAtEnd);
+    }
+  };
+
+  // Listen for scroll events to update button visibility
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', updateScrollButtons);
+      // Initial check for button visibility
+      updateScrollButtons();
+      
+      // Also check on window resize as this may change the scroll width
+      window.addEventListener('resize', updateScrollButtons);
+
+      return () => {
+        container.removeEventListener('scroll', updateScrollButtons);
+        window.removeEventListener('resize', updateScrollButtons);
+      };
+    }
+  }, []);
+
   return (
     <section id="team" className="py-16 bg-charcoal/50">
       <div className="container mx-auto px-4">
@@ -70,16 +151,44 @@ const Team = () => {
         </h2>
         
         {/* Team layout with connecting lines */}
-        <div className="relative mx-auto mb-16" style={{ maxWidth: '1200px' }}>
-          {/* Connecting line - visible on larger screens */}
-          <div className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-violet/20 via-teal/40 to-violet/20 top-16 z-0 hidden md:block"></div>
-          
-          {/* Team members */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-4 lg:gap-2 xl:gap-4">
+        <div className="relative mx-auto mb-16 overflow-hidden" style={{ maxWidth: '1200px' }}>
+          {/* Scroll left button */}
+          {showLeftButton && (
+            <button 
+              onClick={() => handleScroll('left')} 
+              className="scroll-button scroll-left-button"
+              aria-label="Scroll left"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
+
+          {/* Scroll right button */}
+          {showRightButton && (
+            <button 
+              onClick={() => handleScroll('right')} 
+              className="scroll-button scroll-right-button"
+              aria-label="Scroll right"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h17.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
+
+          {/* Container with horizontal scroll */}
+          <div ref={scrollContainerRef} className="overflow-x-auto pb-4 hide-scrollbar">
+            {/* Connecting line - visible on larger screens */}
+            <div className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-violet/20 via-teal/40 to-violet/20 top-16 z-0 hidden md:block" style={{ width: 'max-content', minWidth: '100%' }}></div>
+            
+            {/* Team members */}
+            <div className="flex flex-row flex-nowrap min-w-full" style={{ width: 'max-content' }}>
             {teamMembers.map((member) => (
-              <div key={member.id} className="flex flex-col items-center">
+              <div key={member.id} className="flex flex-col items-center px-4 md:px-6 flex-shrink-0" style={{ width: '180px' }}>
                 {/* Avatar circle */}
-                <div className="relative z-10 mb-6">
+                <div className="relative z-10 mb-3 pt-3">
                   {member.linkedin ? (
                     <a 
                       href={member.linkedin} 
@@ -127,11 +236,22 @@ const Team = () => {
                 </div>
                 
                 {/* Name and role */}
-                <h3 className="text-md font-heading text-teal text-center">{member.name}</h3>
-                <p className="text-offwhite/70 text-sm text-center">{member.role}</p>
+                <h3 className="text-md font-heading text-teal text-center">
+                  {member.name.split(' ')[0]}<br />
+                  {member.name.split(' ').slice(1).join(' ')}
+                </h3>
+                <p className="text-offwhite/70 text-sm text-center">
+                  {member.role.includes(' ') ? (
+                    <>
+                      {member.role.split(' ')[0]}<br />
+                      {member.role.split(' ').slice(1).join(' ')}
+                    </>
+                  ) : member.role}
+                </p>
               </div>
             ))}
           
+            </div>
           </div>
         </div>
       </div>
