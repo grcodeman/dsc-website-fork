@@ -114,7 +114,7 @@ const Team = () => {
             {teamMembers.map((member) => (
               <div key={member.id} className="flex flex-col items-center px-4 md:px-6 flex-shrink-0" style={{ width: '180px' }}>
                 {/* Avatar circle */}
-                <div className="relative z-10 mb-6">
+                <div className="relative z-10 mb-6 pt-3">
                   {member.linkedin ? (
                     <a 
                       href={member.linkedin} 
