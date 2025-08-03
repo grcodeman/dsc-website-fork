@@ -162,8 +162,18 @@ const Team = () => {
                 </div>
                 
                 {/* Name and role */}
-                <h3 className="text-md font-heading text-teal text-center">{member.name}</h3>
-                <p className="text-offwhite/70 text-sm text-center">{member.role}</p>
+                <h3 className="text-md font-heading text-teal text-center">
+                  {member.name.split(' ')[0]}<br />
+                  {member.name.split(' ').slice(1).join(' ')}
+                </h3>
+                <p className="text-offwhite/70 text-sm text-center">
+                  {member.role.includes(' ') ? (
+                    <>
+                      {member.role.split(' ')[0]}<br />
+                      {member.role.split(' ').slice(1).join(' ')}
+                    </>
+                  ) : member.role}
+                </p>
               </div>
             ))}
           
