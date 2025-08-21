@@ -18,7 +18,7 @@ export default function ProjectsPage() {
             DSC Projects
           </h1>
           <p className="text-xl text-offwhite/80 max-w-3xl mx-auto text-center mb-12">
-            Discover the exciting data science projects our members are working on
+            Discover the exciting research projects our members are working on
           </p>
         </div>
         <Projects />
