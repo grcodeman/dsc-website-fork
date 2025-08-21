@@ -1,5 +1,6 @@
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export default function JoinPage() {
   return (
@@ -8,9 +9,9 @@ export default function JoinPage() {
 
       <main className="container mx-auto px-4 py-8 flex-grow">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-teal font-heading">Join DSC @ WMU</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-teal font-heading">Join DSAIC @ WMU</h1>
           <p className="text-xl mb-8">
-            Thank you for your interest in joining Data Science Club! We&apos;re super excited to get you started on the process for joining the club.
+            Follow the below steps to join the Data Science & AI Club at WMU!
           </p>
 
           <div className="space-y-12">
@@ -18,21 +19,28 @@ export default function JoinPage() {
             <div className="p-6 rounded-lg bg-charcoal/50 backdrop-filter backdrop-blur-md shadow-lg border border-teal/20 hover:border-teal/30 transition-all">
               <div className="flex items-center mb-4">
                 <div className="bg-teal text-charcoal rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">1</div>
-                <h2 className="text-2xl font-bold text-teal">Submit Membership Interest Form</h2>
+                <h2 className="text-2xl font-bold text-teal">Submit Membership Form</h2>
               </div>
               <p className="mb-4">
-                Our membership form is going to be the fastest way for us to reach you with the latest information
-                about the club and our events. This also adds you to our Teams group where most of our communication happens.
+                Take a minute to get added to our membership list. This will allow you to receive access to our Microsoft Teams for announcements and updates.
               </p>
               <div className="mt-4">
-                <a 
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdqKjMGc4BOHoqyErFzwrd7XoznudrPDSKupVVv0UBh-CReUA/viewform?usp=dialog" 
-                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 hover:scale-105 hover:shadow-lg transition-all duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Interest Form
-                </a>
+                <div className="relative">
+                  {/* Animated background glow */}
+                  <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-teal/40 to-emerald-400/40 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 group-hover:duration-300"></div>
+                  
+                  {/* Main button with enhanced effects */}
+                  <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdqKjMGc4BOHoqyErFzwrd7XoznudrPDSKupVVv0UBh-CReUA/viewform?usp=dialog" 
+                    className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[rgb(0,230,170)] hover:bg-[rgb(0,230,170)]/80 text-black rounded-lg font-bold text-lg hover:scale-105 shadow-lg hover:shadow-[rgb(0,230,170)]/30 transition-all duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="flex items-center gap-2">
+                      Sign Up <FaArrowCircleRight className="text-xl group-hover:translate-x-1.5 transition-transform" />
+                    </span>
+                  </a>
+                </div>
               </div>
             </div>
 
