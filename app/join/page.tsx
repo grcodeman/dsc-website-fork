@@ -1,5 +1,6 @@
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export default function JoinPage() {
   return (
@@ -25,14 +26,22 @@ export default function JoinPage() {
                 about the club and our events. This also adds you to our Teams group where most of our communication happens.
               </p>
               <div className="mt-4">
-                <a 
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdqKjMGc4BOHoqyErFzwrd7XoznudrPDSKupVVv0UBh-CReUA/viewform?usp=dialog" 
-                  className="inline-block px-6 py-3 bg-teal text-charcoal rounded-md font-bold hover:bg-teal/80 hover:scale-105 hover:shadow-lg transition-all duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Interest Form
-                </a>
+                <div className="relative">
+                  {/* Animated background glow */}
+                  <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-teal/40 to-emerald-400/40 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 group-hover:duration-300"></div>
+                  
+                  {/* Main button with enhanced effects */}
+                  <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdqKjMGc4BOHoqyErFzwrd7XoznudrPDSKupVVv0UBh-CReUA/viewform?usp=dialog" 
+                    className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[rgb(0,230,170)] hover:bg-[rgb(0,230,170)]/80 text-black rounded-lg font-bold text-lg hover:scale-105 shadow-lg hover:shadow-[rgb(0,230,170)]/30 transition-all duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="flex items-center gap-2">
+                      Interest Form <FaArrowCircleRight className="text-xl group-hover:translate-x-1.5 transition-transform" />
+                    </span>
+                  </a>
+                </div>
               </div>
             </div>
 
