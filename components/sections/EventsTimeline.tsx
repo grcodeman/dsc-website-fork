@@ -14,7 +14,7 @@ const events: Event[] = [
   {
     id: 1,
     title: "Data Kickoff Fall 2025",
-    date: "TBA",
+    date: "Thu Sep 4 2025, 6-8pm | Parkview D-109",
     description: "Kicking off the semester with an info session! Students can join projects and meet other members.",
     color: "teal",
   },
@@ -35,7 +35,7 @@ const events: Event[] = [
   {
     id: 4,
     title: "Project Ceremony Fall 2025",
-    date: "TBA",
+    date: "Thu Dec 4 2025, 6-8pm | Parkview D-109",
     description: "Students will showcase their projects and receive awards for their hard work.",
     color: "violet",
   },
