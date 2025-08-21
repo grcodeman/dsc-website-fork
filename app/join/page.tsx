@@ -9,9 +9,9 @@ export default function JoinPage() {
 
       <main className="container mx-auto px-4 py-8 flex-grow">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-teal font-heading">Join DSC @ WMU</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-teal font-heading">Join DSAIC @ WMU</h1>
           <p className="text-xl mb-8">
-            Thank you for your interest in joining Data Science Club! We&apos;re super excited to get you started on the process for joining the club.
+            Follow the below steps to join the Data Science & AI Club at WMU!
           </p>
 
           <div className="space-y-12">
@@ -19,11 +19,10 @@ export default function JoinPage() {
             <div className="p-6 rounded-lg bg-charcoal/50 backdrop-filter backdrop-blur-md shadow-lg border border-teal/20 hover:border-teal/30 transition-all">
               <div className="flex items-center mb-4">
                 <div className="bg-teal text-charcoal rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">1</div>
-                <h2 className="text-2xl font-bold text-teal">Submit Membership Interest Form</h2>
+                <h2 className="text-2xl font-bold text-teal">Submit Membership Form</h2>
               </div>
               <p className="mb-4">
-                Our membership form is going to be the fastest way for us to reach you with the latest information
-                about the club and our events. This also adds you to our Teams group where most of our communication happens.
+                Take a minute to get added to our membership list. This will allow you to receive access to our Microsoft Teams for announcements and updates.
               </p>
               <div className="mt-4">
                 <div className="relative">
@@ -38,7 +37,7 @@ export default function JoinPage() {
                     rel="noopener noreferrer"
                   >
                     <span className="flex items-center gap-2">
-                      Interest Form <FaArrowCircleRight className="text-xl group-hover:translate-x-1.5 transition-transform" />
+                      Sign Up <FaArrowCircleRight className="text-xl group-hover:translate-x-1.5 transition-transform" />
                     </span>
                   </a>
                 </div>
