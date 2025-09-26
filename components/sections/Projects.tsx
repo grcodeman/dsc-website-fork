@@ -6,8 +6,8 @@ const Projects = () => {
   // Sample project data (empty placeholders as requested)
   const projects = [
     {
-      name: "Autonomous Vehicle RC",
-      thumbnail: "",
+      name: "Discord RPG Activity",
+      thumbnail: "/project/discordrpg.png",
       githubUrl: "#",
       contributors: []
     },
@@ -33,9 +33,9 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-16 container mx-auto px-4">
-      <div className="text-center mb-12">
+      <div className="text-left mb-12">
         <h2 className="text-3xl md:text-4xl font-heading text-teal mb-4">Key Projects</h2>
-        <p className="text-offwhite/70 max-w-2xl mx-auto">
+        <p className="text-offwhite/70 max-w-2xl">
           Explore current projects from the Data Science Club at WMU. 
           These projects provide hands-on experience and real-world applications of data science.
         </p>
