@@ -1,7 +1,6 @@
 import React from 'react';
 import ProjectCard from '../cards/ProjectCard';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const Projects = () => {
   // Sample project data (empty placeholders as requested)
