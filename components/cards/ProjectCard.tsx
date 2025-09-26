@@ -21,7 +21,7 @@ const ProjectCard = ({ name, thumbnail, githubUrl, contributors }: ProjectCardPr
             src={thumbnail}
             alt={`${name} thumbnail`}
             fill
-            className="object-cover transition-transform group-hover:scale-105"
+            className="object-cover object-top transition-transform group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-charcoal/40 to-violet/10">
