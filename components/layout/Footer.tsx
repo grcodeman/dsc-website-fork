@@ -245,6 +245,18 @@ const Footer = () => {
               <LED active={true} pulse={true} />
               <span style={{ color: '#00FFC3' }}>Online</span>
             </div>
+            <div className="text-[10px] mt-2 opacity-70" style={{ color: '#E5E5E5' }}>
+              This site uses Microsoft Clarity for analytics to improve user experience.{' '}
+              <a 
+                href="https://privacy.microsoft.com/en-us/privacystatement" 
+                className="hover-teal-custom underline"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#00FFC3' }}
+              >
+                View Microsoft&apos;s Privacy Statement
+              </a>
+            </div>
           </div>
         </div>
       </div>
