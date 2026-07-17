@@ -54,7 +54,7 @@ const EventCard = ({ event }: { event: Event }) => {
       <div className={`${cardBaseClasses} border ${borderColorClass}`}>
         {/* Header with date and title */}
         <div className={`${headerBaseClasses} ${bgColorClassTransparent} ${borderColorClass}`}>
-          <p className="text-sm text-ink/60">{event.date}</p>
+          <p className="text-sm text-ink/70">{event.date}</p>
           <h3 className={`text-xl font-heading ${colorClass}`}>{event.title}</h3>
         </div>
 

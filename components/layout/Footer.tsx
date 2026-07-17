@@ -74,11 +74,11 @@ const NetworkLink = ({
   const isExternal = href.startsWith('http') || href.startsWith('mailto:');
 
   return (
-    <div className="flex items-center mb-1.5 relative z-20">
+    <div className="flex items-center relative z-20">
       <LED active={active} color={ledColor} pulse={Math.random() > 0.7} />
       <a
         href={href}
-        className="text-xs font-mono flex items-center hover-bright"
+        className="text-xs font-mono flex items-center hover-bright py-1.5"
         style={{ color: '#C9C4EC' }}
         {...(isExternal && {
           target: "_blank",

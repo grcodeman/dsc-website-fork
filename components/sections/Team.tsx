@@ -200,7 +200,7 @@ const Team = () => {
                   {member.name.split(' ')[0]}<br />
                   {member.name.split(' ').slice(1).join(' ')}
                 </h3>
-                <p className="text-ink/60 text-sm text-center">
+                <p className="text-ink/70 text-sm text-center">
                   {member.role.includes(' ') ? (
                     <>
                       {member.role.split(' ')[0]}<br />

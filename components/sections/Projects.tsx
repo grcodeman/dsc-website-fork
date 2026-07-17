@@ -56,7 +56,7 @@ const Projects = () => {
           {pastProjects.map((name) => (
             <span
               key={name}
-              className="text-sm text-ink/60 bg-white border border-lavender rounded-full px-4 py-1.5"
+              className="text-sm text-ink/70 bg-white border border-lavender rounded-full px-4 py-1.5"
             >
               {name}
             </span>
