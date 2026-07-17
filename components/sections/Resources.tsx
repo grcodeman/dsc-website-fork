@@ -47,7 +47,7 @@ const ResourceCard = ({ title, description, buttonText, buttonLink, color, icon,
 
 const Resources = () => {
   return (
-    <section id="resources" className="py-16 bg-white/60">
+    <section id="resources" className="py-16 bg-white/60 cv-auto">
 
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-ink">

@@ -4,26 +4,28 @@ import "./globals.css";
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, SOCIAL_LINKS, SOCIAL_IMAGE } from "@/lib/site";
 
-// Define fonts with next/font
+// Define fonts with next/font. Only ship the weights actually used on the
+// site — the hero heading is the LCP element, so every extra font byte
+// delays the swap that finalizes LCP on mobile.
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-  weight: ['400', '500', '600'],
+  weight: ['400', '500'],
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
-  weight: ['500', '600', '700'],
+  weight: ['500', '700'],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-jetbrains-mono',
-  weight: ['400', '500', '700'],
+  weight: ['400'],
 });
 
 export const metadata: Metadata = {
@@ -138,7 +140,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {children}
-        <Script id="ms-clarity" strategy="afterInteractive">
+        <Script id="ms-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

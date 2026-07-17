@@ -60,6 +60,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-ink);
 }
 
+/* Skip layout/paint work for below-the-fold sections until the user nears
+   them — improves Speed Index and main-thread time on mobile. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
 /* Accent hover for links on light surfaces */
 .hover-accent {
   transition: color 0.2s ease;

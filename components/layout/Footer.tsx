@@ -142,7 +142,7 @@ const ICChip = ({ className = '' }: { className?: string }) => (
 
 const Footer = () => {
   return (
-    <footer className="mt-auto py-6 relative overflow-hidden" style={{ backgroundColor: '#151238', color: '#ECEAF8' }}>
+    <footer className="mt-auto py-6 relative overflow-hidden cv-auto" style={{ backgroundColor: '#151238', color: '#ECEAF8' }}>
       {/* Circuit Board Background - deep indigo PCB */}
       <div className="absolute inset-0 z-0" style={{ backgroundColor: '#1B1745', opacity: 0.7 }}>
         {/* Background grid pattern */}
