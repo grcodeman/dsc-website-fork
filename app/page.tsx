@@ -8,7 +8,7 @@ import Team from "../components/sections/Team";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-charcoal text-offwhite">
+    <div className="flex flex-col min-h-screen">
       <Header />
 
       <main>

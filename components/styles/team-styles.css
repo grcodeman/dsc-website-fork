@@ -20,9 +20,9 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  background-color: rgba(31, 31, 31, 0.7); /* Dark background with opacity */
-  color: #ADFFEA; /* Teal color for the arrow */
-  border: 1px solid #7158B6; /* Violet border */
+  background-color: rgba(255, 255, 255, 0.9); /* Light background with opacity */
+  color: #7243C1; /* Violet arrow */
+  border: 1px solid #DFD8F2; /* Lavender border */
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -31,11 +31,11 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(37, 25, 122, 0.15);
 }
 
 .scroll-button:hover {
-  background-color: rgba(50, 50, 50, 0.85);
+  background-color: #ffffff;
   transform: translateY(-50%) scale(1.1);
 }
 
