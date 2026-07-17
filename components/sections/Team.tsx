@@ -43,6 +43,8 @@ const teamMembers: TeamMember[] = [
     name: "Sandy",
     role: "Projects",
     initials: "S",
+    image: "/pfp/santhiya.webp",
+    linkedin: "https://www.linkedin.com/in/vsanthiya/",
   },
   {
     id: 5,
