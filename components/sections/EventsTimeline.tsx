@@ -69,7 +69,7 @@ const EventCard = ({ event }: { event: Event }) => {
 
 const EventsTimeline = () => {
   return (
-    <section id="events" className="py-16">
+    <section id="events" className="py-16 cv-auto">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-ink">
           Schedule
