@@ -95,7 +95,7 @@ const CalendarPage = () => {
                           borderColor: colorValueBorder,
                         }}
                       >
-                        <p className="text-sm text-ink/60">{event.date}</p>
+                        <p className="text-sm text-ink/70">{event.date}</p>
                         <h3
                           className="text-xl font-heading"
                           style={{ color: colorValue }}

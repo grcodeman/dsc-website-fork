@@ -20,6 +20,7 @@ const ProjectCard = ({ name, description, lead, thumbnail, githubUrl, icon }: Pr
             src={thumbnail}
             alt={`${name} thumbnail`}
             fill
+            sizes="(max-width: 768px) 100vw, 432px"
             className="object-cover object-top transition-transform group-hover:scale-105"
           />
         ) : (
@@ -44,7 +45,7 @@ const ProjectCard = ({ name, description, lead, thumbnail, githubUrl, icon }: Pr
 
           {githubUrl && (
             <Link href={githubUrl}
-                  className="text-sm text-ink/60 hover:text-violet transition-colors flex items-center gap-1"
+                  className="text-sm text-ink/70 hover:text-violet transition-colors flex items-center gap-1"
                   target="_blank"
                   rel="noopener noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">

@@ -20,6 +20,7 @@ const Header = () => {
               src="/dsaic-logo.png"
               alt="Data Science & AI Club logo"
               fill
+              sizes="40px"
               className="object-contain"
             />
           </div>
