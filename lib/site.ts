@@ -1,10 +1,11 @@
 // Central site configuration.
 //
-// Set NEXT_PUBLIC_SITE_URL to the production origin (e.g. https://yourdomain.org)
-// so Open Graph/Twitter tags, the canonical URL, sitemap.xml, robots.txt, and the
-// structured data all emit absolute links. Falls back to localhost for local dev.
+// SITE_URL is the production origin used to build absolute links for Open
+// Graph/Twitter tags, the canonical URL, sitemap.xml, robots.txt, and the
+// structured data. Defaults to the live domain; set NEXT_PUBLIC_SITE_URL to
+// override it for preview deploys or local builds.
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dscwmu.org'
 ).replace(/\/$/, '');
 
 export const SITE_NAME = 'Data Science & AI Club at WMU';
