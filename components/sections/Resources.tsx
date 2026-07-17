@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { FaPython, FaRobot, FaGlobe, FaFileAlt } from 'react-icons/fa';
+import { FaPython, FaRobot, FaGithub, FaYoutube, FaFileAlt } from 'react-icons/fa';
 
 interface ResourceCardProps {
   title: string;
@@ -10,13 +10,14 @@ interface ResourceCardProps {
   buttonLink: string;
   color: 'violet' | 'ink';
   icon: 'python' | 'robot';
-  linkType: 'github' | 'pdf';
+  linkType: 'github' | 'youtube' | 'pdf';
 }
 
 const ResourceCard = ({ title, description, buttonText, buttonLink, color, icon, linkType }: ResourceCardProps) => {
   // Select the appropriate icon component
   const IconComponent = icon === 'python' ? FaPython : FaRobot;
-  const LinkIconComponent = linkType === 'github' ? FaGlobe : FaFileAlt;
+  const linkIcons = { github: FaGithub, youtube: FaYoutube, pdf: FaFileAlt };
+  const LinkIconComponent = linkIcons[linkType];
   return (
     <div className="bg-white rounded-lg border border-lavender hover:border-violet/40 overflow-hidden transition-all duration-300 h-full shadow-[0_8px_24px_-12px_rgba(37,25,122,0.18)]">
       {/* Top gradient area */}
@@ -50,29 +51,29 @@ const Resources = () => {
 
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-ink">
-          Resources
+          Our Favorite Resources
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Python Data Science Tutorial */}
+          {/* Maths, CS & AI Compendium */}
           <ResourceCard
-            title="Data/ML Onboarding Repo"
-            description="Learn essential Python tools for data science including NumPy, Pandas, Matplotlib and Scikit-Learn."
+            title="Maths, CS & AI Compendium"
+            description="Become a cracked AI/ML Research Engineer. A curated learning experience by YC funded AI researcher, covers the basics and gives great entry points into various frontier AI paths."
             buttonText="GitHub"
-            buttonLink="https://github.com/Data-Science-Club-at-WMU/Python-Data-Science-Onboarding"
+            buttonLink="https://github.com/HenryNdubuaku/maths-cs-ai-compendium"
             color="violet"
             icon="python"
             linkType="github"
           />
 
-          {/* Machine Learning Tutorials */}
+          {/* YC AI Startup School 2025 */}
           <ResourceCard
-            title="Advanced ML Tutorials"
-            description="Explore machine learning concepts and techniques through hands-on tutorials and practical examples."
-            buttonText="GitHub"
-            buttonLink="https://github.com/Data-Science-Club-at-WMU/Machine-Learning-Tutorials"
+            title="YC AI Startup School 2025"
+            description="Every year YC assembles the greatest AI minds to speak including Elon Musk, Satya Nadella, Sam Altman, Andrej Karpathy, Andrew Ng, Fei-Fei Li, Varun Mohan, John Jumper, Aravind Srinivas, Michael Truell and more."
+            buttonText="YouTube"
+            buttonLink="https://www.youtube.com/playlist?list=PLQ-uHSnFig5NPx4adxl97CZb8vU4numwi"
             color="ink"
             icon="robot"
-            linkType="github"
+            linkType="youtube"
           />
         </div>
       </div>
