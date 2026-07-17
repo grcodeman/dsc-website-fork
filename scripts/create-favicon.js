@@ -4,8 +4,8 @@ const path = require('path');
 
 async function createFavicon() {
   try {
-    // Path to the source JPEG image
-    const inputPath = path.join(__dirname, '../public/dsc_logo.jpeg');
+    // Path to the source image (white-background club logo)
+    const inputPath = path.join(__dirname, '../public/dsaic-logo-white.png');
     // Path to save the favicon.ico
     const outputPath = path.join(__dirname, '../public/favicon.ico');
     

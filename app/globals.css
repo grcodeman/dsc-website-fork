@@ -1,46 +1,42 @@
 @import "tailwindcss";
 
-:root {
-  /* Light mode colors (kept for reference but using dark color scheme) */
-  --background: #ffffff;
-  --foreground: #171717;
-  
-  /* New color palette */
-  --charcoal: #1A1A1D;
-  --teal: #00FFC3;
-  --violet: #B200FF;
-  --blue: #00A3FF;
-  --pink: #FF00D6;
-  --green: #00FF66;
-  --brown: #8B4513;
-  --orange: #FFA500;
-  --offwhite: #E5E5E5;
-  
-  /* Typography */
-  --font-heading: 'JetBrains Mono', monospace;
-  --font-body: 'Inter', sans-serif;
+/*
+  DSAIC design tokens — single warm light theme.
+  Palette is sampled from the club logo: deep indigo-navy wordmark (#25197A)
+  and wireframe violet (#7243C1) on warm cream paper.
+*/
+@theme {
+  --color-cream: #FAF6EE;
+  --color-ink: #25197A;
+  --color-violet: #7243C1;
+  --color-lavender: #DFD8F2;
+  --color-navy: #151238;
+  --color-offwhite: #ECEAF8;
+  --color-mint: #2FBF8F;
+  --color-gold: #F0B429;
+
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+
+  --tracking-widest: 0.2em;
+
+  --shadow-card: 0 1px 2px rgba(37, 25, 122, 0.05), 0 8px 24px -12px rgba(37, 25, 122, 0.18);
+  --shadow-card-hover: 0 2px 4px rgba(37, 25, 122, 0.06), 0 16px 32px -12px rgba(37, 25, 122, 0.25);
 }
 
-/* Custom theme properties */
 :root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-charcoal: var(--charcoal);
-  --color-teal: var(--teal);
-  --color-violet: var(--violet);
-  --color-offwhite: var(--offwhite);
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1A1A1D; /* Very dark charcoal background */
-    --foreground: #E5E5E5; /* Off-white text */
-  }
+::selection {
+  background: var(--color-violet);
+  color: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-cream);
+  color: #3A3175;
   font-family: var(--font-body);
   line-height: 1.6;
   letter-spacing: 0.01em;
@@ -54,61 +50,71 @@ body {
   margin-right: auto;
 }
 
-/* LED indicator glow effects */
-.led-teal {
-  background-color: var(--teal);
-  box-shadow: 0 0 4px 1px var(--teal);
-}
-
-.led-blue {
-  background-color: var(--blue);
-  box-shadow: 0 0 4px 1px var(--blue);
-}
-
-.led-violet {
-  background-color: var(--violet);
-  box-shadow: 0 0 4px 1px var(--violet);
-}
-
-.led-pink {
-  background-color: var(--pink);
-  box-shadow: 0 0 4px 1px var(--pink);
-}
-
-.led-green {
-  background-color: var(--green);
-  box-shadow: 0 0 4px 1px var(--green);
-}
-
-.led-brown {
-  background-color: var(--brown);
-  box-shadow: 0 0 4px 1px var(--brown);
-}
-
-.led-orange {
-  background-color: var(--orange);
-  box-shadow: 0 0 4px 1px var(--orange);
-}
-
-.led-inactive {
-  background-color: #4B4B4B;
-  box-shadow: 0 0 2px 0px rgba(255, 255, 255, 0.1) inset;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-transform: uppercase;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.08em;
   margin-top: 1.5em;
   margin-bottom: 0.75em;
   font-weight: 700;
+  color: var(--color-ink);
 }
 
-/* Custom hover class for footer links to ensure they always stay light-colored */
-.hover-teal-custom {
+/* Accent hover for links on light surfaces */
+.hover-accent {
   transition: color 0.2s ease;
 }
 
-.hover-teal-custom:hover {
-  color: #00FFC3 !important;
+.hover-accent:hover {
+  color: var(--color-violet);
+}
+
+/* Bright hover for links on the dark footer */
+.hover-bright {
+  transition: color 0.2s ease;
+}
+
+.hover-bright:hover {
+  color: #ffffff;
+}
+
+/* LED indicator glow effects (used on the dark footer panel) */
+.led-teal {
+  background-color: var(--color-mint);
+  box-shadow: 0 0 4px 1px var(--color-mint);
+}
+
+.led-blue {
+  background-color: #4C9AF5;
+  box-shadow: 0 0 4px 1px #4C9AF5;
+}
+
+.led-violet {
+  background-color: #8B5CF6;
+  box-shadow: 0 0 4px 1px #8B5CF6;
+}
+
+.led-pink {
+  background-color: #E45BC3;
+  box-shadow: 0 0 4px 1px #E45BC3;
+}
+
+.led-green {
+  background-color: var(--color-mint);
+  box-shadow: 0 0 4px 1px var(--color-mint);
+}
+
+.led-gold {
+  background-color: var(--color-gold);
+  box-shadow: 0 0 4px 1px var(--color-gold);
+}
+
+.led-orange {
+  background-color: #F59E0B;
+  box-shadow: 0 0 4px 1px #F59E0B;
+}
+
+.led-inactive {
+  background-color: #4B4B5E;
+  box-shadow: 0 0 2px 0px rgba(255, 255, 255, 0.1) inset;
 }

@@ -8,7 +8,7 @@ interface ResourceCardProps {
   description: string;
   buttonText: string;
   buttonLink: string;
-  color: 'teal' | 'violet';
+  color: 'violet' | 'ink';
   icon: 'python' | 'robot';
   linkType: 'github' | 'pdf';
 }
@@ -18,23 +18,23 @@ const ResourceCard = ({ title, description, buttonText, buttonLink, color, icon,
   const IconComponent = icon === 'python' ? FaPython : FaRobot;
   const LinkIconComponent = linkType === 'github' ? FaGlobe : FaFileAlt;
   return (
-    <div className="bg-charcoal/70 rounded-lg border border-teal/20 hover:border-violet/30 overflow-hidden transition-all duration-300 h-full">
+    <div className="bg-white rounded-lg border border-lavender hover:border-violet/40 overflow-hidden transition-all duration-300 h-full shadow-[0_8px_24px_-12px_rgba(37,25,122,0.18)]">
       {/* Top gradient area */}
-      <div className="h-16 w-full bg-gradient-to-r from-violet/20 to-teal/20 flex items-center justify-start px-4">
-        <IconComponent className="text-2xl mr-3 text-white" size={24} />
-        <h3 className="text-xl font-heading text-teal dark:text-teal">{title}</h3>
+      <div className="h-16 w-full bg-gradient-to-r from-violet/10 to-ink/5 flex items-center justify-start px-4">
+        <IconComponent className="text-2xl mr-3 text-violet" size={24} />
+        <h3 className="text-xl font-heading text-ink">{title}</h3>
       </div>
-      
+
       {/* Content area */}
       <div className="p-4">
-        <p className="text-offwhite/90 mb-4">{description}</p>
-        
+        <p className="text-ink/75 mb-4">{description}</p>
+
         <div className="flex justify-end">
-          <a 
+          <a
             href={buttonLink}
             target="_blank"
             rel="noopener noreferrer"
-            className={`py-2 px-4 rounded-md bg-gradient-to-r ${color === 'teal' ? 'from-emerald-600 to-teal dark:from-teal dark:to-teal/70' : 'from-purple-700 to-violet dark:from-violet dark:to-violet/70'} text-white font-heading text-sm uppercase tracking-wider hover:scale-105 transition-transform flex items-center gap-1`}
+            className={`py-2 px-4 rounded-md ${color === 'violet' ? 'bg-violet hover:bg-ink' : 'bg-ink hover:bg-violet'} text-white font-heading text-sm uppercase tracking-wider hover:scale-105 transition-all flex items-center gap-1`}
           >
             <LinkIconComponent className="mr-1" /> {buttonText}
           </a>
@@ -46,31 +46,31 @@ const ResourceCard = ({ title, description, buttonText, buttonLink, color, icon,
 
 const Resources = () => {
   return (
-    <section id="resources" className="py-16 bg-charcoal/50">
-      
+    <section id="resources" className="py-16 bg-white/60">
+
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-violet">
+        <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-ink">
           Resources
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Python Data Science Tutorial */}
-          <ResourceCard 
-            title="Data/ML Onboarding Repo" 
+          <ResourceCard
+            title="Data/ML Onboarding Repo"
             description="Learn essential Python tools for data science including NumPy, Pandas, Matplotlib and Scikit-Learn."
             buttonText="GitHub"
             buttonLink="https://github.com/Data-Science-Club-at-WMU/Python-Data-Science-Onboarding"
-            color="teal"
+            color="violet"
             icon="python"
             linkType="github"
           />
-          
+
           {/* Machine Learning Tutorials */}
-          <ResourceCard 
-            title="Advanced ML Tutorials" 
+          <ResourceCard
+            title="Advanced ML Tutorials"
             description="Explore machine learning concepts and techniques through hands-on tutorials and practical examples."
             buttonText="GitHub"
             buttonLink="https://github.com/Data-Science-Club-at-WMU/Machine-Learning-Tutorials"
-            color="violet"
+            color="ink"
             icon="robot"
             linkType="github"
           />

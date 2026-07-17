@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 
 // Define fonts with next/font
 const inter = Inter({
@@ -9,6 +9,13 @@ const inter = Inter({
   display: 'swap',
   variable: '--font-inter',
   weight: ['400', '500', '600'],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+  weight: ['500', '600', '700'],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -19,16 +26,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Data Science Club at WMU",
-  description: "Student club at WMU focused on Data Science, AI and ML",
+  title: "Data Science & AI Club at WMU",
+  description: "Student club at Western Michigan University focused on data science, AI, and machine learning",
   icons: {
     icon: [
       { url: "/favicon.png", type: "image/png" },
-      { url: "/dsc_logo.jpeg", type: "image/jpeg" },
     ],
     shortcut: "/favicon.png",
     apple: [
-      { url: "/dsc_logo.jpeg", sizes: "180x180", type: "image/jpeg" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
 };
@@ -39,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">
         {children}
         <Script id="ms-clarity" strategy="afterInteractive">

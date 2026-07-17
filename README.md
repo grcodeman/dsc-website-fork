@@ -1,6 +1,6 @@
 ![DSC Website Header](./images/header.png)
 
-# DSC Website
+# DSAIC Website
 
 This is the official website for the Data Science & AI Club at WMU, built with Next.js, React, TypeScript, and Tailwind CSS.
 
