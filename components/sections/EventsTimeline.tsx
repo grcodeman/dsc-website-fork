@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 type Event = {
   id: number;
@@ -8,6 +9,7 @@ type Event = {
   date: string;
   description: string;
   color: 'violet' | 'ink';
+  link?: { href: string; label: string };
 };
 
 const events: Event[] = [
@@ -24,6 +26,7 @@ const events: Event[] = [
     date: "Thu Sep 3 2026, 6:30-9pm | Parkview D-109",
     description: "Kick off the year with us! Featuring speaker Jia Chen, plus introductions to Developer Club, DSAIC, and W1 Builders.",
     color: "ink",
+    link: { href: "https://experiencewmu.wmich.edu/event/12515581", label: "Event Details" },
   },
   {
     id: 3,
@@ -39,6 +42,9 @@ const EventCard = ({ event }: { event: Event }) => {
   const bgColorClass = event.color === 'violet' ? 'bg-violet' : 'bg-ink';
   const bgColorClassTransparent = event.color === 'violet' ? 'bg-violet/5' : 'bg-ink/5';
   const borderColorClass = event.color === 'violet' ? 'border-violet/25' : 'border-ink/25';
+  const linkColorClasses = event.color === 'violet'
+    ? 'text-violet border-violet/30 bg-violet/10 hover:bg-violet hover:text-white'
+    : 'text-ink border-ink/30 bg-ink/10 hover:bg-ink hover:text-white';
 
   // Base style classes
   const nodeBaseClasses = "absolute left-0 w-5 h-5 rounded-full z-20 group-hover:scale-150 transition-transform duration-300 ease-out border-2 border-cream";
@@ -58,9 +64,20 @@ const EventCard = ({ event }: { event: Event }) => {
           <h3 className={`text-xl font-heading ${colorClass}`}>{event.title}</h3>
         </div>
 
-        {/* Description - hidden until hover */}
-        <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300 ease-out bg-white">
-          <p className="p-4 text-ink/75">{event.description}</p>
+        {/* Description */}
+        <div className="p-4 bg-white">
+          <p className="text-ink/75">{event.description}</p>
+          {event.link && (
+            <a
+              href={event.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`mt-3 inline-flex items-center gap-2 px-4 py-2 text-sm font-bold rounded-md border transition-all ${linkColorClasses}`}
+            >
+              {event.link.label}
+              <FaExternalLinkAlt className="text-xs" aria-hidden />
+            </a>
+          )}
         </div>
       </div>
     </div>
