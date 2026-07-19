@@ -3,18 +3,35 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { getLenis } from '@/lib/lenis';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // On the homepage, clicking the brand scrolls back to the top instead of
+  // re-navigating; from other pages it acts as a normal link home.
+  const handleBrandClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== '/') return;
+    event.preventDefault();
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(0);
+    } else {
+      // No Lenis means the user prefers reduced motion — jump instantly.
+      window.scrollTo({ top: 0 });
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full py-3 isolate">
       <div className="container mx-auto rounded-full bg-white/70 backdrop-filter backdrop-blur-md border border-lavender shadow-[0_4px_16px_rgba(37,25,122,0.08)] hover:shadow-[0_4px_20px_rgba(37,25,122,0.12)] transition-all px-6 py-2.5 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Link href="/" onClick={handleBrandClick} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <div className="relative w-10 h-10">
             <Image
               src="/dsaic-logo.png"
