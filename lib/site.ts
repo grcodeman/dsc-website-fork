@@ -17,7 +17,7 @@ export const SITE_DESCRIPTION =
 // via schema.org `sameAs`.
 export const SOCIAL_LINKS = [
   'https://www.linkedin.com/company/data-science-club-wmu/',
-  'https://www.instagram.com/wmudatascience',
+  'https://www.instagram.com/dsaicwmu/',
   'https://experiencewmu.wmich.edu/organization/dsaic',
   'https://github.com/Data-Science-Club-at-WMU',
 ];

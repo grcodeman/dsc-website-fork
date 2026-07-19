@@ -1,10 +1,16 @@
 import React from 'react';
 import ProjectCard from '../cards/ProjectCard';
 import Link from 'next/link';
-import { FaCoins, FaCarSide } from 'react-icons/fa';
+import { FaCoins, FaCarSide, FaServer } from 'react-icons/fa';
 
-// 2026-27 active projects, both eboard-led
+// 2026-27 active projects, all eboard-led
 const projects = [
+  {
+    name: "AI Inference Server",
+    lead: "Cody",
+    icon: <FaServer />,
+    description: "A club-owned dual-GPU server for running open models like Gemma 4 locally, exposed to members as a shared API endpoint. Infrastructure for our agentic projects and a hands-on look at what it takes to self-host serious AI on a budget.",
+  },
   {
     name: "Club Finance AI",
     lead: "Rafia",
