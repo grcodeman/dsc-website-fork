@@ -13,6 +13,16 @@ upload can't be accessed. Note that images returned by the Read tool are
 embedded in the transcript the same way — dedupe candidates by byte-comparing
 against existing files in the repo.
 
+## PR workflow — check merge state before reusing anything
+
+The user merges PRs fast, often minutes after they're opened. Before pushing
+follow-up commits to the session branch or touching an existing PR's
+title/body, re-fetch and check whether that PR already merged. Once merged:
+rebase any unmerged commits onto fresh `origin/main` (dropping the merged
+ones), force-with-lease push, and open a NEW PR — pushes to a merged PR's
+branch don't reopen it, and editing a merged PR's description corrupts the
+historical record of what it shipped.
+
 ## Site quick reference
 
 - The homepage "slideshow" is the About-section gallery: `GALLERY_IMAGES` in

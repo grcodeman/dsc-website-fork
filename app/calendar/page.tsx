@@ -1,4 +1,5 @@
 import React from "react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -13,6 +14,7 @@ type Event = {
   date: string;
   description: string;
   color: "violet" | "ink";
+  link?: { href: string; label: string };
 };
 
 const events: Event[] = [
@@ -29,6 +31,7 @@ const events: Event[] = [
     date: "Thu Sep 3 2026, 6:30-9:00pm | Parkview Campus, Room D-109",
     description: "Kick off the year with us! Featuring speaker Jia Chen, plus introductions to Developer Club, DSAIC, and W1 Builders. Hosted in collaboration with Developer Club and W1 Builders.",
     color: "ink",
+    link: { href: "https://experiencewmu.wmich.edu/event/12515581", label: "Event Details" },
   },
   {
     id: 3,
@@ -107,6 +110,22 @@ const CalendarPage = () => {
                       {/* Description */}
                       <div className="p-4">
                         <p className="text-ink/75">{event.description}</p>
+                        {event.link && (
+                          <a
+                            href={event.link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex items-center gap-2 px-4 py-2 text-sm font-bold rounded-md border transition-opacity hover:opacity-75"
+                            style={{
+                              color: colorValue,
+                              borderColor: colorValueBorder,
+                              backgroundColor: colorValueTransparent,
+                            }}
+                          >
+                            {event.link.label}
+                            <FaExternalLinkAlt className="text-xs" aria-hidden />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
