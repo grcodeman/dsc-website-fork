@@ -52,7 +52,7 @@ export default function JoinPage() {
               </div>
               <p className="mb-4 text-ink/75">
                 Meet us in person! Stop by our table at Bronco Bash on September 1, or come
-                to Info Night on September 2 at Parkview D-109.
+                to Info Night on September 3 at Parkview D-109.
               </p>
               <Link
                 href="/calendar"
