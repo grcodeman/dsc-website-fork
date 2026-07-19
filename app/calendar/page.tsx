@@ -2,52 +2,12 @@ import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { EVENTS } from "@/lib/events";
 
 export const metadata = {
   title: "Calendar | Data Science & AI Club at WMU",
   description: "Upcoming events from the Data Science & AI Club at Western Michigan University",
 };
-
-type Event = {
-  id: number;
-  title: string;
-  date: string;
-  description: string;
-  color: "violet" | "ink";
-  link?: { href: string; label: string };
-};
-
-const events: Event[] = [
-  {
-    id: 1,
-    title: "Bronco Bash",
-    date: "Tue Sep 1 2026, 3:00-6:00pm | Main Campus",
-    description: "Come support us and stop by our table for free goodies and snacks!",
-    color: "violet",
-  },
-  {
-    id: 2,
-    title: "Info Night",
-    date: "Thu Sep 3 2026, 6:30-9:00pm | Parkview Campus, Room D-109",
-    description: "Kick off the year with us! Featuring speaker Jia Chen, plus introductions to Developer Club, DSAIC, and W1 Builders. Hosted in collaboration with Developer Club and W1 Builders.",
-    color: "ink",
-    link: { href: "https://experiencewmu.wmich.edu/event/12515581", label: "Event Details" },
-  },
-  {
-    id: 3,
-    title: "Company Tour",
-    date: "TBA",
-    description: "Currently in the works, stay tuned!",
-    color: "violet",
-  },
-  {
-    id: 4,
-    title: "Stryker Company Tour",
-    date: "Spring | TBA",
-    description: "Visiting Stryker to learn about their industry usage of data science and AI.",
-    color: "ink",
-  },
-];
 
 const CalendarPage = () => {
   return (
@@ -72,7 +32,7 @@ const CalendarPage = () => {
               }}></div>
 
               {/* Event Items */}
-              {events.map((event) => {
+              {EVENTS.map((event) => {
                 const colorValue = event.color === "violet" ? "#7243C1" : "#25197A";
                 const colorValueTransparent = event.color === "violet" ? "rgba(114, 67, 193, 0.06)" : "rgba(37, 25, 122, 0.05)";
                 const colorValueBorder = event.color === "violet" ? "rgba(114, 67, 193, 0.3)" : "rgba(37, 25, 122, 0.3)";

@@ -1,43 +1,8 @@
-"use client";
-
 import React from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FEATURED_EVENTS, type ClubEvent } from '@/lib/events';
 
-type Event = {
-  id: number;
-  title: string;
-  date: string;
-  description: string;
-  color: 'violet' | 'ink';
-  link?: { href: string; label: string };
-};
-
-const events: Event[] = [
-  {
-    id: 1,
-    title: "Bronco Bash",
-    date: "Tue Sep 1 2026, 3-6pm | Main Campus",
-    description: "Come support us and stop by our table for free goodies and snacks!",
-    color: "violet",
-  },
-  {
-    id: 2,
-    title: "Info Night",
-    date: "Thu Sep 3 2026, 6:30-9pm | Parkview D-109",
-    description: "Kick off the year with us! Featuring speaker Jia Chen, plus introductions to Developer Club, DSAIC, and W1 Builders.",
-    color: "ink",
-    link: { href: "https://experiencewmu.wmich.edu/event/12515581", label: "Event Details" },
-  },
-  {
-    id: 3,
-    title: "Company Tour",
-    date: "TBA",
-    description: "Currently in the works, stay tuned!",
-    color: "violet",
-  },
-];
-
-const EventCard = ({ event }: { event: Event }) => {
+const EventCard = ({ event }: { event: ClubEvent }) => {
   const colorClass = event.color === 'violet' ? 'text-violet' : 'text-ink';
   const bgColorClass = event.color === 'violet' ? 'bg-violet' : 'bg-ink';
   const bgColorClassTransparent = event.color === 'violet' ? 'bg-violet/5' : 'bg-ink/5';
@@ -97,7 +62,7 @@ const EventsTimeline = () => {
 
           {/* Timeline Items */}
           <div className="relative z-20">
-            {events.map((event) => (
+            {FEATURED_EVENTS.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
