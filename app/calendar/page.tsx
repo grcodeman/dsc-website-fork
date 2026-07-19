@@ -26,7 +26,7 @@ const events: Event[] = [
   {
     id: 2,
     title: "Info Night",
-    date: "Wed Sep 2 2026, 6:30-9:00pm | Parkview Campus, Room D-109",
+    date: "Thu Sep 3 2026, 6:30-9:00pm | Parkview Campus, Room D-109",
     description: "Kick off the year with us! Featuring speaker Jia Chen, plus introductions to Developer Club, DSAIC, and W1 Builders. Hosted in collaboration with Developer Club and W1 Builders.",
     color: "ink",
   },
