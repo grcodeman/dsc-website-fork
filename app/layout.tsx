@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, SOCIAL_LINKS, SOCIAL_IMAGE } from "@/lib/site";
 
@@ -139,6 +140,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <SmoothScroll />
         {children}
         <Script id="ms-clarity" strategy="lazyOnload">
           {`
