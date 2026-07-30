@@ -7,7 +7,7 @@ import { FaCoins, FaCarSide, FaServer } from 'react-icons/fa';
 const projects = [
   {
     name: "AI Inference Server",
-    lead: "Cody",
+    lead: "Saad",
     icon: <FaServer />,
     description: "A club-owned dual-GPU server for running open models like Gemma 4 locally, exposed to members as a shared API endpoint. Infrastructure for our agentic projects and a hands-on look at what it takes to self-host serious AI on a budget.",
   },
