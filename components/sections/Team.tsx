@@ -40,6 +40,14 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 4,
+    name: "Syed Sobhan",
+    role: "Finance",
+    initials: "SS",
+    image: "/pfp/syed.webp",
+    linkedin: "https://www.linkedin.com/in/syed-m-sobhan-4b998a358/",
+  },
+  {
+    id: 5,
     name: "Sandy",
     role: "Projects",
     initials: "S",
@@ -47,7 +55,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/vsanthiya/",
   },
   {
-    id: 5,
+    id: 6,
     name: "Yulia Baez",
     role: "Socials",
     initials: "YB",

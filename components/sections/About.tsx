@@ -71,7 +71,26 @@ const About = () => {
             </p>
             <h3 className="text-2xl font-heading my-6 text-violet">What We Do</h3>
             <ul className="list-disc list-inside space-y-2 text-ink/80">
-              <li>Build weekly at joint sessions with Developer Club</li>
+              <li>
+                Build weekly at joint sessions with{' '}
+                <a
+                  href="https://devwmu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet underline underline-offset-2 hover:text-ink transition-colors"
+                >
+                  Developer Club
+                </a>{' '}
+                and{' '}
+                <a
+                  href="https://www.w1build.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet underline underline-offset-2 hover:text-ink transition-colors"
+                >
+                  W1 Builders
+                </a>
+              </li>
               <li>Collaborate on real-world data science and AI projects</li>
               <li>Connect with industry professionals and researchers</li>
               <li>Create a supportive environment for learning and growth</li>
