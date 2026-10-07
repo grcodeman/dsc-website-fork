@@ -150,7 +150,8 @@ const SessionRow = ({ session, clock, isNext }: { session: Session; clock: strin
   );
 };
 
-const CalendarSchedule = ({ initialNow }: { initialNow: number }) => {
+/** `children` renders between upcoming and past events (the Instagram recaps). */
+const CalendarSchedule = ({ initialNow, children }: { initialNow: number; children?: React.ReactNode }) => {
   const clock = clubClock(useNow(initialNow));
   const sessions = sessionsAt(clock);
   const next = nextSession(sessions)?.session;
@@ -214,6 +215,8 @@ const CalendarSchedule = ({ initialNow }: { initialNow: number }) => {
           </div>
         </section>
       )}
+
+      {children}
 
       {past.length > 0 && (
         <section aria-labelledby="past-heading" className="mt-16">

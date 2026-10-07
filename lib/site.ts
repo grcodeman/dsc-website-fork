@@ -25,9 +25,10 @@ export const SOCIAL_LINKS = [
 
 // Link preview card (Open Graph / Twitter). Built by scripts/create-og-image.py
 // at the 1200x630 every platform crops to. JPEG rather than WebP because a few
-// crawlers (notably LinkedIn) still skip WebP previews.
+// crawlers (notably LinkedIn) still skip WebP previews. Bump ?v= whenever the
+// image changes: link previews cache images by URL.
 export const SOCIAL_IMAGE = {
-  url: '/og-image.jpg',
+  url: '/og-image.jpg?v=2',
   width: 1200,
   height: 630,
   alt: 'Members of the Data Science & AI Club at Western Michigan University',
