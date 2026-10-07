@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import { FaPython, FaRobot, FaGithub, FaYoutube, FaFileAlt } from 'react-icons/fa';
 

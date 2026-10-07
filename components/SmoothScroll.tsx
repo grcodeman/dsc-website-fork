@@ -2,9 +2,12 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import { setLenis, getLenis } from '@/lib/lenis';
+
+// The first scroll, key press, or tap loads Lenis, so its code and its
+// per-frame loop stay out of the initial page load.
+const FIRST_INTERACTION = ['wheel', 'keydown', 'pointerdown', 'touchstart'] as const;
 
 // Site-wide Lenis smooth scrolling. Renders nothing; mounted once in the
 // root layout. Skipped entirely for users who prefer reduced motion.
@@ -12,11 +15,19 @@ const SmoothScroll = () => {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const lenis = new Lenis({ autoRaf: true, anchors: true });
-    setLenis(lenis);
+    let unmounted = false;
+    const load = () => {
+      FIRST_INTERACTION.forEach((type) => window.removeEventListener(type, load));
+      import('lenis').then(({ default: Lenis }) => {
+        if (!unmounted) setLenis(new Lenis({ autoRaf: true, anchors: true }));
+      });
+    };
+    FIRST_INTERACTION.forEach((type) => window.addEventListener(type, load, { passive: true }));
 
     return () => {
-      lenis.destroy();
+      unmounted = true;
+      FIRST_INTERACTION.forEach((type) => window.removeEventListener(type, load));
+      getLenis()?.destroy();
       setLenis(null);
     };
   }, []);

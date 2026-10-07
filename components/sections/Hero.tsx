@@ -14,43 +14,48 @@ const Hero = ({ now }: { now: number }) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas dimensions and handle resize
+    // Each digit is drawn once into an offscreen sprite sheet, at the largest
+    // size it can appear, so every frame only copies and scales bitmaps. The
+    // old loop set a font and color string per digit per frame (1,000 parses
+    // every frame), which kept the main thread busy on phones.
+    const TOTAL_DIGITS = 500;
+    const MAX_SIZE = 18; // digits are 10-18px
+    const SPRITE_SCALE = 1.6; // the biggest perspective scale on phones and laptops
+    const CELL = Math.ceil(MAX_SIZE * SPRITE_SCALE * 1.3);
+    const COLUMNS = 25;
+    const PAD = 4; // glyph origin inside its cell
+    const BASELINE = Math.round(CELL * 0.8);
+    const SPEED = 0.3; // radians per second
+
+    const sheet = document.createElement('canvas');
+    sheet.width = COLUMNS * CELL;
+    sheet.height = Math.ceil(TOTAL_DIGITS / COLUMNS) * CELL;
+    const sheetCtx = sheet.getContext('2d');
+    if (!sheetCtx) return;
+
+    let angle = 0;
+    let ready = false;
+
     const handleResize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+      if (ready) draw();
     };
-
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    // Create an array of digits (1s and 0s) that form the torus
-    interface Digit {
-      x: number;
-      y: number;
-      z: number;
-      originalX: number;
-      originalY: number;
-      originalZ: number;
-      char: string;
-      size: number;
-      color: string;
-      displacement: number;
-    }
-
-    const digits: Digit[] = [];
+    // Digits (1s and 0s) scattered over a torus
     const torusRadius = Math.min(canvas.width, canvas.height) * 0.3; // Major radius
     const tubeRadius = torusRadius * 0.3; // Minor radius
-    const totalDigits = 500; // Total number of digits to render
+    const digits: { x: number; y: number; z: number; sx: number; sy: number; scale: number }[] = [];
+    // Every glyph is drawn at the largest digit size (one font parse total);
+    // smaller digits are scaled down when placed.
+    sheetCtx.font = `${MAX_SIZE * SPRITE_SCALE}px monospace`;
 
-    // Create digits positioned in a torus shape
-    for (let i = 0; i < totalDigits; i++) {
+    for (let i = 0; i < TOTAL_DIGITS; i++) {
       // Parametric equation for a torus
       const u = Math.random() * Math.PI * 2; // Angle around the tube
       const v = Math.random() * Math.PI * 2; // Angle around the center of the torus
-
-      const x = (torusRadius + tubeRadius * Math.cos(u)) * Math.cos(v);
-      const y = (torusRadius + tubeRadius * Math.cos(u)) * Math.sin(v);
-      const z = tubeRadius * Math.sin(u);
 
       // Wireframe violet with occasional deep-indigo digits, matching the logo mark
       const isDeep = Math.random() > 0.75;
@@ -58,65 +63,91 @@ const Hero = ({ now }: { now: number }) => {
       const color = isDeep
         ? `rgba(37, 25, 122, ${alpha})`
         : `rgba(${100 + Math.floor(Math.random() * 30)}, ${55 + Math.floor(Math.random() * 25)}, ${185 + Math.floor(Math.random() * 25)}, ${alpha})`;
+      const size = 10 + Math.random() * 8; // Size variation
 
-      // Add a digit at this position
+      const sx = (i % COLUMNS) * CELL;
+      const sy = Math.floor(i / COLUMNS) * CELL;
+      sheetCtx.fillStyle = color;
+      sheetCtx.fillText(Math.random() > 0.5 ? '1' : '0', sx + PAD, sy + BASELINE);
+
       digits.push({
-        x,
-        y,
-        z,
-        originalX: x,
-        originalY: y,
-        originalZ: z,
-        char: Math.random() > 0.5 ? '1' : '0',
-        size: 10 + Math.random() * 8, // Size variation
-        color,
-        displacement: 0
+        x: (torusRadius + tubeRadius * Math.cos(u)) * Math.cos(v),
+        y: (torusRadius + tubeRadius * Math.cos(u)) * Math.sin(v),
+        z: tubeRadius * Math.sin(u),
+        sx,
+        sy,
+        scale: size / MAX_SIZE,
       });
     }
 
-    // Track animation state
-    let animationFrameId: number;
-    let angle = 0;
+    // Back-to-front by starting depth. The order never changes, so sort once.
+    digits.sort((a, b) => a.z - b.z);
 
-    // Animation function
-    const animate = () => {
-      angle += 0.005; // Slow rotation speed
+    const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Center of the canvas
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
 
-      // Sort digits by z-index for pseudo-3D effect
-      const sortedDigits = [...digits].sort((a, b) => a.z - b.z);
-
-      // Draw each digit
-      sortedDigits.forEach(digit => {
-        // Apply a slow rotation to the torus
-        const rotatedX = digit.x * Math.cos(angle) - digit.z * Math.sin(angle);
-        const rotatedZ = digit.x * Math.sin(angle) + digit.z * Math.cos(angle);
-
-        // Calculate display position with perspective scaling directly
+      for (const d of digits) {
+        // Slow rotation, then perspective
+        const rotatedX = d.x * cos - d.z * sin;
+        const rotatedZ = d.x * sin + d.z * cos;
         const perspectiveScale = 600 / (600 + rotatedZ);
-        const finalX = centerX + rotatedX * perspectiveScale;
-        const finalY = centerY + digit.y * perspectiveScale;
-
-        // Draw the digit
-        ctx.font = `${digit.size * perspectiveScale}px monospace`;
-        ctx.fillStyle = digit.color;
-        ctx.fillText(digit.char, finalX, finalY);
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
+        const k = (d.scale * perspectiveScale) / SPRITE_SCALE;
+        ctx.drawImage(
+          sheet,
+          d.sx, d.sy, CELL, CELL,
+          centerX + rotatedX * perspectiveScale - PAD * k,
+          centerY + d.y * perspectiveScale - BASELINE * k,
+          CELL * k, CELL * k
+        );
+      }
     };
 
-    // Start animation
-    animate();
+    ready = true;
+    draw();
+
+    // Spin only while the torus is on screen, and not at all for visitors who
+    // prefer reduced motion (they get the still frame above).
+    let frameId = 0;
+    let last = 0;
+    const tick = (now: number) => {
+      frameId = requestAnimationFrame(tick);
+      const elapsed = now - last;
+      if (elapsed < 15) return; // cap at ~60fps on high-refresh screens
+      angle += (Math.min(elapsed, 100) / 1000) * SPEED;
+      last = now;
+      draw();
+    };
+    const start = () => {
+      if (frameId) return;
+      last = performance.now();
+      frameId = requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      cancelAnimationFrame(frameId);
+      frameId = 0;
+    };
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !reduceMotion) start();
+      else stop();
+    });
+    // Begin once the page has finished its startup work, so the spin doesn't
+    // compete with it. Safari has no requestIdleCallback.
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1000));
+    const cancelIdle = window.cancelIdleCallback ?? window.clearTimeout;
+    const idleId = idle(() => observer.observe(canvas));
 
     // Clean up
     return () => {
       window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
+      cancelIdle(idleId);
+      observer.disconnect();
+      stop();
     };
   }, []);
 
