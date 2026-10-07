@@ -1,6 +1,7 @@
 import React from 'react';
-import { FaCalendarPlus, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaCalendarPlus, FaExternalLinkAlt, FaGoogle } from 'react-icons/fa';
 import type { ClubEvent } from '@/lib/events';
+import { SITE_URL } from '@/lib/site';
 import {
   eventWhen,
   formatDayOfMonth,
@@ -79,14 +80,40 @@ export const Badge = ({ tone, children }: { tone: BadgeTone; children: React.Rea
   </span>
 );
 
-/** Downloads every upcoming session and event, ready to import into any calendar app. */
-export const AddToCalendarLink = ({ className = '' }: { className?: string }) => (
+const FEED_PATH = '/calendar.ics';
+
+// Google Calendar's subscribe link adds the feed as its own calendar, which
+// Google re-fetches about once a day, so new dates and room changes reach
+// members on their own. The feed has to be public over HTTPS.
+const GOOGLE_SUBSCRIBE_URL = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(
+  `${SITE_URL.replace(/^https?:/, 'webcal:')}${FEED_PATH}`
+)}`;
+
+/** Google's phone apps can't subscribe from a link, so say how to do it. */
+export const GOOGLE_CALENDAR_NOTE =
+  "Google keeps every session in sync as dates change. Use the Google Calendar app? Add it once from a computer and it'll show up there.";
+
+const CALENDAR_LINK_CLASSES =
+  'inline-flex items-center justify-center gap-2 rounded-md font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet';
+
+/** Subscribes the visitor's Google Calendar to the club feed. */
+export const GoogleCalendarLink = ({ className = '' }: { className?: string }) => (
   <a
-    href="/calendar.ics"
-    className={`inline-flex items-center justify-center gap-2 rounded-md font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet ${className}`}
+    href={GOOGLE_SUBSCRIBE_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`${CALENDAR_LINK_CLASSES} ${className}`}
   >
+    <FaGoogle aria-hidden />
+    Add to Google Calendar
+  </a>
+);
+
+/** Downloads every upcoming session and event for Apple Calendar, Outlook, or any other app. */
+export const CalendarFileLink = ({ className = '' }: { className?: string }) => (
+  <a href={FEED_PATH} className={`${CALENDAR_LINK_CLASSES} ${className}`}>
     <FaCalendarPlus aria-hidden />
-    Add to calendar
+    Apple / Outlook
   </a>
 );
 

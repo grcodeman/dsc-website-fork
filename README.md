@@ -22,7 +22,7 @@ A fully static, performance-focused site built with the Next.js App Router. It s
 ## Features
 
 - **Friday build sessions front and center** — the hero shows the next session, and the schedule flags weeks off and room changes
-- **Events in one place** — a single source of truth (`lib/events.ts`) feeds the calendar page, the landing page schedule, and an "Add to calendar" feed at `/calendar.ics`; past sessions and events drop off on their own
+- **Events in one place** — a single source of truth (`lib/events.ts`) feeds the calendar page, the landing page schedule, and a calendar feed at `/calendar.ics` (behind the Add to Google Calendar and Apple / Outlook buttons); past sessions and events drop off on their own
 - **Projects showcase** with active and past club projects
 - **Photo gallery** cycling through club event photos
 - **Smooth scrolling** powered by Lenis, with `prefers-reduced-motion` respected

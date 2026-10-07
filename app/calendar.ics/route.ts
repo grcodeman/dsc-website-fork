@@ -8,9 +8,11 @@ import {
 } from "@/lib/schedule";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-// The "Add to calendar" file: every upcoming build session and dated event.
-// Built statically and refreshed hourly, so sessions drop off once they're
-// over and a member importing it in November doesn't get October's.
+// The club calendar feed: every upcoming build session and dated event.
+// Apple / Outlook users download it; Google Calendar subscribes to it and
+// re-fetches it daily, so it must stay valid and public. Built statically and
+// refreshed hourly, so sessions drop off once they're over and a member
+// importing it in November doesn't get October's.
 export const dynamic = "force-static";
 export const revalidate = 3600;
 

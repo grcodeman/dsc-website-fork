@@ -19,7 +19,13 @@ import {
   upcomingEvents,
   type Session,
 } from '@/lib/schedule';
-import { AddToCalendarLink, Badge, EventCard } from '@/components/schedule/ScheduleBits';
+import {
+  Badge,
+  CalendarFileLink,
+  EventCard,
+  GOOGLE_CALENDAR_NOTE,
+  GoogleCalendarLink,
+} from '@/components/schedule/ScheduleBits';
 
 const FRIDAYS_SHOWN = 4;
 
@@ -130,15 +136,17 @@ const Schedule = ({ now }: { now: number }) => {
           </>
         )}
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 md:flex-row">
           <Link
             href="/calendar"
-            className="w-full rounded-md bg-violet px-6 py-3 text-center font-bold text-white shadow-[0_8px_24px_-8px_rgba(114,67,193,0.6)] transition-colors hover:bg-ink sm:w-auto"
+            className="w-full rounded-md bg-violet px-6 py-3 text-center font-bold text-white shadow-[0_8px_24px_-8px_rgba(114,67,193,0.6)] transition-colors hover:bg-ink md:w-auto"
           >
             See the full calendar
           </Link>
-          <AddToCalendarLink className="w-full border border-violet/40 px-6 py-3 text-violet hover:bg-violet/5 sm:w-auto" />
+          <GoogleCalendarLink className="w-full border border-violet/40 px-6 py-3 text-violet hover:bg-violet/5 md:w-auto" />
+          <CalendarFileLink className="w-full border border-violet/40 px-6 py-3 text-violet hover:bg-violet/5 md:w-auto" />
         </div>
+        <p className="mx-auto mt-4 max-w-md text-center text-xs leading-relaxed text-ink/55">{GOOGLE_CALENDAR_NOTE}</p>
       </div>
     </section>
   );

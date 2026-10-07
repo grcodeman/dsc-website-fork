@@ -22,7 +22,15 @@ import {
   upcomingEvents,
   type Session,
 } from '@/lib/schedule';
-import { AddToCalendarLink, Badge, DateTile, EventCard, Led } from '@/components/schedule/ScheduleBits';
+import {
+  Badge,
+  CalendarFileLink,
+  DateTile,
+  EventCard,
+  GOOGLE_CALENDAR_NOTE,
+  GoogleCalendarLink,
+  Led,
+} from '@/components/schedule/ScheduleBits';
 
 const monthDay = (date: string) => `${formatMonthShort(date)} ${formatDayOfMonth(date)}`;
 
@@ -77,8 +85,11 @@ const SessionSummary = ({ clock, sessions }: { clock: string; sessions: Session[
           <p className="mt-2 text-sm text-gold">Heads up: that one&apos;s in Room {upcoming.session.room}.</p>
         )}
 
-        <AddToCalendarLink className="mt-6 w-full bg-white px-5 py-3 text-ink hover:bg-lavender" />
-        <p className="mt-2 text-center text-xs text-white/60">Works with Apple Calendar, Outlook, and Google Calendar.</p>
+        <div className="mt-6 flex flex-col gap-2">
+          <GoogleCalendarLink className="w-full bg-white px-5 py-3 text-ink hover:bg-lavender" />
+          <CalendarFileLink className="w-full border border-white/30 px-5 py-3 text-white hover:bg-white/10" />
+        </div>
+        <p className="mt-3 text-xs leading-relaxed text-white/60">{GOOGLE_CALENDAR_NOTE}</p>
       </div>
     </div>
   );
