@@ -2,8 +2,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import NextSessionCard from '../cards/NextSessionCard';
 
-const Hero = () => {
+const Hero = ({ now }: { now: number }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -146,6 +147,7 @@ const Hero = () => {
               <Link href="/join" className="bg-violet text-white font-heading px-8 py-3 rounded-md hover:bg-ink transition-colors uppercase tracking-widest font-bold shadow-[0_8px_24px_-8px_rgba(114,67,193,0.6)] transform hover:scale-105 duration-300 cursor-pointer inline-block text-center">
                 Join Now
               </Link>
+              <NextSessionCard initialNow={now} className="mt-10 mx-auto md:mx-0" />
             </div>
           </div>
         </div>
