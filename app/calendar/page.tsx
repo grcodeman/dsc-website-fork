@@ -6,14 +6,19 @@ import CalendarSchedule from "@/components/sections/CalendarSchedule";
 import InstagramRecaps from "@/components/sections/InstagramRecaps";
 import { BUILD_SESSION } from "@/lib/events";
 import { SESSION_PLACE, SESSION_TIME } from "@/lib/schedule";
+import { pageMetadata } from "@/lib/site";
+import { scheduleJsonLd } from "@/lib/structuredData";
 
-const DESCRIPTION = `Data Science & AI Club build sessions every ${BUILD_SESSION.weekday}, ${SESSION_TIME}, in the WMU ${SESSION_PLACE}, plus upcoming club events.`;
+const base = pageMetadata({
+  title: "Calendar",
+  description: `Data Science & AI Club build sessions every ${BUILD_SESSION.weekday}, ${SESSION_TIME}, in the WMU ${SESSION_PLACE}, plus upcoming club events.`,
+  path: "/calendar",
+});
 
 export const metadata: Metadata = {
-  // The root layout's title template appends the club name.
-  title: "Calendar",
-  description: DESCRIPTION,
-  alternates: { canonical: "/calendar" },
+  ...base,
+  // Lets feed readers and agents find the calendar file from the page.
+  alternates: { ...base.alternates, types: { "text/calendar": "/calendar.ics" } },
 };
 
 // Re-render hourly so the static HTML marks past and next sessions correctly;
@@ -25,6 +30,10 @@ const CalendarPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(scheduleJsonLd(now)) }}
+      />
       <Header />
       <main className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-5xl mx-auto">

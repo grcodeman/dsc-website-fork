@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 // Central site configuration.
 //
 // SITE_URL is the production origin used to build absolute links for Open
@@ -37,3 +39,33 @@ export const SOCIAL_IMAGE = {
 
 // Brand color for the mobile browser toolbar and the web app manifest.
 export const THEME_COLOR = '#25197A';
+
+/**
+ * Metadata for a page other than the homepage: its own title, canonical URL,
+ * and link preview. Next.js replaces the layout's openGraph and twitter
+ * objects outright when a page sets them, so both are rebuilt in full here to
+ * keep the preview image.
+ */
+export function pageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
+  const fullTitle = `${title} | ${SITE_NAME}`;
+  return {
+    title, // the root layout's title template appends the club name
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'website',
+      siteName: SITE_NAME,
+      locale: 'en_US',
+      title: fullTitle,
+      description,
+      url: path,
+      images: [SOCIAL_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+      images: [SOCIAL_IMAGE.url],
+    },
+  };
+}

@@ -7,7 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/projects", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/calendar", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/join", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/discord", priority: 0.5, changeFrequency: "yearly" as const },
+    // /discord is left out: it only redirects to the Discord invite, and
+    // sitemaps should list pages that load directly.
   ];
 
   return routes.map(({ path, priority, changeFrequency }) => ({

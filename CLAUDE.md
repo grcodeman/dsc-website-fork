@@ -32,3 +32,6 @@ historical record of what it shipped.
   logic in `lib/schedule.ts`). The hero card, landing Schedule section,
   calendar page, and `/calendar.ics` all read it; components re-check the
   visitor's clock, so past items drop off without a redeploy.
+- New pages should export `pageMetadata({ title, description, path })` from
+  `lib/site.ts`. Without it a page inherits the homepage's canonical URL and
+  og:url, which tells search engines it's a duplicate of the homepage.

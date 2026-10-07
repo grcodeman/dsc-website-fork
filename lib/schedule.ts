@@ -23,6 +23,27 @@ export function clubClock(now: number): string {
   return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`;
 }
 
+/** Minutes Kalamazoo is ahead of UTC at instant `t` (negative: -240 in summer). */
+function clubOffsetMinutes(t: number) {
+  const [d, time] = clubClock(t).split('T');
+  const [y, m, day] = d.split('-').map(Number);
+  const [hh, mm] = time.split(':').map(Number);
+  return (Date.UTC(y, m - 1, day, hh, mm) - Math.floor(t / 60_000) * 60_000) / 60_000;
+}
+
+/** A Kalamazoo date and time as ISO 8601 with its UTC offset, e.g. "2026-10-09T18:30:00-04:00". */
+export function clubIsoDateTime(date: string, time: string) {
+  const [y, m, d] = date.split('-').map(Number);
+  const [hh, mm] = time.split(':').map(Number);
+  const wall = Date.UTC(y, m - 1, d, hh, mm);
+  // Read the offset at the wall time, then again at the corrected instant so
+  // times near a daylight-saving switch get the right one.
+  const offset = clubOffsetMinutes(wall - clubOffsetMinutes(wall) * 60_000);
+  const abs = Math.abs(offset);
+  const sign = offset < 0 ? '-' : '+';
+  return `${date}T${time}:00${sign}${String(Math.floor(abs / 60)).padStart(2, '0')}:${String(abs % 60).padStart(2, '0')}`;
+}
+
 export type TimeStatus = 'past' | 'live' | 'upcoming';
 
 function statusAt(clock: string, date: string, start: string, end: string): TimeStatus {
