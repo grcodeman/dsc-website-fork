@@ -10,57 +10,73 @@ interface TeamMember {
   role: string;
   initials: string;
   image?: string; // Optional profile image URL
-  linkedin?: string; // Optional LinkedIn profile URL
+  profile?: string; // Optional LinkedIn or faculty page URL
 }
 
 const teamMembers: TeamMember[] = [
   {
     id: 1,
+    name: "Dr. Hong",
+    role: "Faculty Advisor",
+    initials: "H",
+    image: "/pfp/hong.webp",
+    profile: "https://wmich.edu/computer-science/directory/hong",
+  },
+  {
+    id: 2,
     name: "Cody Thornell",
     role: "President",
     initials: "CT",
     image: "/pfp/cody.webp",
-    linkedin: "https://www.linkedin.com/in/codythornell/",
-  },
-  {
-    id: 2,
-    name: "Saad Mahmud",
-    role: "Vice President",
-    initials: "SM",
-    image: "/pfp/saad.webp",
-    linkedin: "https://www.linkedin.com/in/saad-mahmud-/",
+    profile: "https://www.linkedin.com/in/codythornell/",
   },
   {
     id: 3,
-    name: "Rafia Authoi",
-    role: "Marketing",
-    initials: "RA",
-    image: "/pfp/rafia.webp",
-    linkedin: "https://www.linkedin.com/in/rafia-authoi/",
+    name: "Saad Mahmud",
+    role: "VP of Operations & Tech",
+    initials: "SM",
+    image: "/pfp/saad.webp",
+    profile: "https://www.linkedin.com/in/saad-mahmud-/",
   },
   {
     id: 4,
+    name: "Rafia Authoi",
+    role: "VP of Marketing & Outreach",
+    initials: "RA",
+    image: "/pfp/rafia.webp",
+    profile: "https://www.linkedin.com/in/rafia-authoi/",
+  },
+  {
+    id: 5,
     name: "Syed Sobhan",
     role: "Finance",
     initials: "SS",
     image: "/pfp/syed.webp",
-    linkedin: "https://www.linkedin.com/in/syed-m-sobhan-4b998a358/",
-  },
-  {
-    id: 5,
-    name: "Sandy",
-    role: "Projects",
-    initials: "S",
-    image: "/pfp/santhiya.webp",
-    linkedin: "https://www.linkedin.com/in/vsanthiya/",
+    profile: "https://www.linkedin.com/in/syed-m-sobhan-4b998a358/",
   },
   {
     id: 6,
+    name: "Matthew Phinney",
+    role: "Research Officer",
+    initials: "MP",
+    image: "/pfp/matthew.webp",
+    profile: "https://www.linkedin.com/in/matt-phinney-851237208/",
+  },
+  {
+    id: 7,
+    name: "Justin Tan",
+    role: "Research Officer",
+    initials: "JT",
+    image: "/pfp/justin.webp",
+    profile: "https://www.linkedin.com/in/justin-tan-02bb8a338/",
+  },
+  {
+    id: 8,
     name: "Yulia Baez",
     role: "Socials",
     initials: "YB",
     image: "/pfp/yulia.webp",
-    linkedin: "https://www.linkedin.com/in/yulia-ildeliza-arias-baez-a5110a308/",
+    profile: "https://www.linkedin.com/in/yulia-ildeliza-arias-baez-a5110a308/",
   },
 ];
 
@@ -156,16 +172,17 @@ const Team = () => {
             {/* Team members */}
             <div className="flex flex-row flex-nowrap min-w-full" style={{ width: 'max-content' }}>
             {teamMembers.map((member) => (
-              <div key={member.id} className="flex flex-col items-center px-4 md:px-6 flex-shrink-0" style={{ width: '180px' }}>
+              // Narrower on wide screens so all eight officers fit without scrolling
+              <div key={member.id} className="flex flex-col items-center px-4 md:px-6 xl:px-2 flex-shrink-0 w-[180px] xl:w-[150px]">
                 {/* Avatar circle */}
                 <div className="relative z-10 mb-3 pt-3">
-                  {member.linkedin ? (
+                  {member.profile ? (
                     <a 
-                      href={member.linkedin} 
+                      href={member.profile} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="block"
-                      aria-label={`${member.name}'s LinkedIn profile`}
+                      aria-label={`${member.name}'s ${member.profile.includes('linkedin.com') ? 'LinkedIn profile' : 'profile page'}`}
                     >
                       <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-violet/15 to-ink/10 flex items-center justify-center border-2 border-violet/30 shadow-[0_8px_24px_-12px_rgba(37,25,122,0.3)] overflow-hidden transition-transform hover:scale-105">
                         {member.image ? (
@@ -210,14 +227,8 @@ const Team = () => {
                   {member.name.split(' ')[0]}<br />
                   {member.name.split(' ').slice(1).join(' ')}
                 </h3>
-                <p className="text-ink/70 text-sm text-center">
-                  {member.role.includes(' ') ? (
-                    <>
-                      {member.role.split(' ')[0]}<br />
-                      {member.role.split(' ').slice(1).join(' ')}
-                    </>
-                  ) : member.role}
-                </p>
+                {/* Balanced wrapping keeps long titles readable: "VP of Marketing / & Outreach" */}
+                <p className="text-ink/70 text-sm text-center text-balance">{member.role}</p>
               </div>
             ))}
           
