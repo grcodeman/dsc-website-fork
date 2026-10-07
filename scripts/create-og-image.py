@@ -69,8 +69,18 @@ card.paste(logo, (PAD, logo_y), logo)
 text_x = PAD + logo.width + 30
 title = font("SpaceGrotesk-Bold.ttf", 47)
 sub = font("SpaceGrotesk-Medium.ttf", 25)
-draw.text((text_x, band_top + 47), "Data Science & AI Club", font=title, fill=INK, anchor="ls")
-draw.text((text_x, band_top + 103), "Western Michigan University  ·  dscwmu.org", font=sub, fill=VIOLET, anchor="ls")
+LINE_GAP = 18  # title baseline to the top of the subtitle's capitals
+
+# Center the two lines on the logo, measured from the title's cap height to
+# the subtitle's baseline (descenders hang below, as they do optically).
+title_cap = -draw.textbbox((0, 0), "H", font=title, anchor="ls")[1]
+sub_cap = -draw.textbbox((0, 0), "H", font=sub, anchor="ls")[1]
+block_h = title_cap + LINE_GAP + sub_cap
+title_y = round(logo_y + logo_h / 2 - block_h / 2 + title_cap)
+sub_y = title_y + LINE_GAP + sub_cap
+
+draw.text((text_x, title_y), "Data Science & AI Club", font=title, fill=INK, anchor="ls")
+draw.text((text_x, sub_y), "Western Michigan University  ·  dscwmu.org", font=sub, fill=VIOLET, anchor="ls")
 
 card.save(OUT, quality=88, optimize=True, progressive=True)
 print(f"wrote {OUT.relative_to(ROOT)} ({OUT.stat().st_size // 1024} KB) {card.size}")
