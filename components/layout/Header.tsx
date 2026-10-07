@@ -23,8 +23,9 @@ const Header = () => {
     if (lenis) {
       lenis.scrollTo(0);
     } else {
-      // No Lenis means the user prefers reduced motion — jump instantly.
-      window.scrollTo({ top: 0 });
+      // Lenis loads on first interaction (and never with reduced motion).
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     }
   };
 
