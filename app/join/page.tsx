@@ -4,11 +4,13 @@ import Link from "next/link";
 import { FaArrowCircleRight, FaCalendarAlt, FaGithub } from "react-icons/fa";
 import { BUILD_SESSION } from "@/lib/events";
 import { SESSION_PLACE, SESSION_TIME } from "@/lib/schedule";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = {
-  title: "Join | Data Science & AI Club at WMU",
+export const metadata = pageMetadata({
+  title: "Join",
   description: "Join the Data Science & AI Club at Western Michigan University — one form and you're in",
-};
+  path: "/join",
+});
 
 const MEMBERSHIP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfBu3lEXavOT56VEP1xvJxf1wb1bobRm3m6jlqJNqFPTSee-g/viewform";
 

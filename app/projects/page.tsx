@@ -1,11 +1,13 @@
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 import Projects from "../../components/sections/Projects";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = {
-  title: "Projects | Data Science & AI Club at WMU",
+export const metadata = pageMetadata({
+  title: "Projects",
   description: "Explore current projects from the Data Science & AI Club at Western Michigan University",
-};
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (
