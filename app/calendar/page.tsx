@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CalendarSchedule from "@/components/sections/CalendarSchedule";
+import InstagramRecaps from "@/components/sections/InstagramRecaps";
 import { BUILD_SESSION } from "@/lib/events";
 import { SESSION_PLACE, SESSION_TIME } from "@/lib/schedule";
 
@@ -33,7 +34,9 @@ const CalendarPage = () => {
             posted here once they&apos;re scheduled. For the latest updates, check our Microsoft Teams.
           </p>
 
-          <CalendarSchedule initialNow={now} />
+          <CalendarSchedule initialNow={now}>
+            <InstagramRecaps />
+          </CalendarSchedule>
         </div>
       </main>
       <Footer />

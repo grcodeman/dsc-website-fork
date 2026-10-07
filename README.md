@@ -52,6 +52,7 @@ npm run lint    # lint the codebase
 | --- | --- |
 | Weekly build sessions | `lib/events.ts` — `BUILD_SESSION` holds the usual day, time, and room; `BUILD_SESSIONS` lists each Friday, with `room` for a room change and `noSession` for a week off |
 | Special events | `lib/events.ts` — `EVENTS`; give an event a `date` once it's scheduled and it shows on the landing page until it's over |
+| Instagram recaps on the calendar page | `lib/instagram.ts` + 1080x1350 WebP images in `public/instagram/` |
 | Active & past projects | `components/sections/Projects.tsx` |
 | About-section photo gallery | `components/sections/About.tsx` + image files in `public/` |
 | Team members | `components/sections/Team.tsx` + photos in `public/pfp/` |
