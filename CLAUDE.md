@@ -28,3 +28,7 @@ historical record of what it shipped.
 - The homepage "slideshow" is the About-section gallery: `GALLERY_IMAGES` in
   `components/sections/About.tsx`, image files in `public/` (WebP preferred,
   photos are 1024x768).
+- Friday build sessions and special events live in `lib/events.ts` (time
+  logic in `lib/schedule.ts`). The hero card, landing Schedule section,
+  calendar page, and `/calendar.ics` all read it; components re-check the
+  visitor's clock, so past items drop off without a redeploy.

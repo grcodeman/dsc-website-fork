@@ -2,6 +2,8 @@ import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 import Link from "next/link";
 import { FaArrowCircleRight, FaCalendarAlt, FaGithub } from "react-icons/fa";
+import { BUILD_SESSION } from "@/lib/events";
+import { SESSION_PLACE, SESSION_TIME } from "@/lib/schedule";
 
 export const metadata = {
   title: "Join | Data Science & AI Club at WMU",
@@ -48,11 +50,11 @@ export default function JoinPage() {
             <div className="p-6 rounded-xl bg-white shadow-[0_8px_24px_-12px_rgba(37,25,122,0.18)] border border-lavender hover:border-violet/40 transition-all">
               <div className="flex items-center gap-3 mb-3">
                 <FaCalendarAlt className="text-violet text-xl" />
-                <h3 className="text-xl font-bold text-ink my-0">Come to an Event</h3>
+                <h3 className="text-xl font-bold text-ink my-0">Come to a Build Session</h3>
               </div>
               <p className="mb-4 text-ink/75">
-                Meet us in person! Stop by our table at Bronco Bash on September 1, or come
-                to Info Night on September 3 at Parkview D-109.
+                Meet us in person! We build every {BUILD_SESSION.weekday}, {SESSION_TIME}, in
+                the {SESSION_PLACE}.
               </p>
               <Link
                 href="/calendar"

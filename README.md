@@ -21,7 +21,8 @@ A fully static, performance-focused site built with the Next.js App Router. It s
 
 ## Features
 
-- **Events in one place** — a single source of truth (`lib/events.ts`) feeds both the calendar page and the landing page schedule
+- **Friday build sessions front and center** — the hero shows the next session, and the schedule flags weeks off and room changes
+- **Events in one place** — a single source of truth (`lib/events.ts`) feeds the calendar page, the landing page schedule, and an "Add to calendar" feed at `/calendar.ics`; past sessions and events drop off on their own
 - **Projects showcase** with active and past club projects
 - **Photo gallery** cycling through club event photos
 - **Smooth scrolling** powered by Lenis, with `prefers-reduced-motion` respected
@@ -49,7 +50,8 @@ npm run lint    # lint the codebase
 
 | Content | Where |
 | --- | --- |
-| Events (calendar + landing schedule) | `lib/events.ts` — flip `featured` to show an event on the landing page |
+| Weekly build sessions | `lib/events.ts` — `BUILD_SESSION` holds the usual day, time, and room; `BUILD_SESSIONS` lists each Friday, with `room` for a room change and `noSession` for a week off |
+| Special events | `lib/events.ts` — `EVENTS`; give an event a `date` once it's scheduled and it shows on the landing page until it's over |
 | Active & past projects | `components/sections/Projects.tsx` |
 | About-section photo gallery | `components/sections/About.tsx` + image files in `public/` |
 | Team members | `components/sections/Team.tsx` + photos in `public/pfp/` |
