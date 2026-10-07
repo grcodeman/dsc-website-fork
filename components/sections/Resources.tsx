@@ -20,10 +20,12 @@ const ResourceCard = ({ title, description, buttonText, buttonLink, color, icon,
   const LinkIconComponent = linkIcons[linkType];
   return (
     <div className="bg-white rounded-lg border border-lavender hover:border-violet/40 overflow-hidden transition-all duration-300 h-full shadow-[0_8px_24px_-12px_rgba(37,25,122,0.18)]">
-      {/* Top gradient area */}
-      <div className="h-16 w-full bg-gradient-to-r from-violet/10 to-ink/5 flex items-center justify-start px-4">
-        <IconComponent className="text-2xl mr-3 text-violet" size={24} />
-        <h3 className="text-xl font-heading text-ink">{title}</h3>
+      {/* Top gradient area. It grows when the title wraps on phones, and the
+          title's margins are zeroed because the global heading margins would
+          otherwise push it below the icon. */}
+      <div className="min-h-16 w-full bg-gradient-to-r from-violet/10 to-ink/5 flex items-center justify-start px-4 py-3">
+        <IconComponent className="text-2xl mr-3 text-violet shrink-0" size={24} />
+        <h3 className="my-0! text-xl leading-tight font-heading text-ink">{title}</h3>
       </div>
 
       {/* Content area */}
