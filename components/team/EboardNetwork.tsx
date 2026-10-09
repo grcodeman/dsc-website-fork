@@ -13,23 +13,23 @@ export interface EboardMember {
   profile?: string; // Optional LinkedIn or faculty page URL
 }
 
-export interface EboardLayer {
-  label: string;
-  members: EboardMember[];
-}
+// Members fill the layers in lineup order, three at a time.
+const PER_LAYER = 3;
 
 // Layout in px unless noted. From md up the layers run left to right like a
 // textbook network diagram; on phones they stack top to bottom.
-const WIDE_TOP = 40; // room for the layer labels
-const WIDE_SLOT = 140; // vertical room per node in the tallest layer
+const WIDE_TOP = 14;
+const WIDE_SLOT = 150; // vertical room per node in the tallest layer
 const WIDE_BOTTOM = 72; // room for the lowest node's name
 const WIDE_FIRST_X = 9; // % of width
 const WIDE_LAST_X = 91;
-const TALL_ROW = 196;
-const TALL_NODE_Y = 84; // node center within its row
+const TALL_ROW = 188;
+const TALL_NODE_Y = 56; // node center within its row
 
 const HOP_MS = 650; // how long a signal takes to cross one edge
-const MAGNET_RADIUS = 260; // nodes this close to the cursor lean toward it
+const MAGNET_RADIUS = 280; // nodes this close to the cursor lean toward it
+const REACH_RADIUS = 230; // the cursor sends dashed feelers to nodes this close
+const REACHES = 3;
 const PULSES = 16; // signal dots that can be in flight at once
 
 type Layout = 'wide' | 'tall';
@@ -44,13 +44,15 @@ interface NetNode {
   member?: EboardMember; // undefined for the "you" output node
 }
 
-const buildNetwork = (layers: EboardLayer[]) => {
+const buildNetwork = (members: EboardMember[]) => {
+  const layers: EboardMember[][] = [];
+  for (let i = 0; i < members.length; i += PER_LAYER) layers.push(members.slice(i, i + PER_LAYER));
   // Every eboard layer, then one output node: you.
-  const sizes = [...layers.map((layer) => layer.members.length), 1];
+  const sizes = [...layers.map((layer) => layer.length), 1];
   const span = Math.max(...sizes) * WIDE_SLOT;
   const nodes: NetNode[] = sizes.flatMap((count, layer) =>
     Array.from({ length: count }, (_, j) => {
-      const member = layers[layer]?.members[j];
+      const member = layers[layer]?.[j];
       return {
         key: member?.name ?? 'you',
         layer,
@@ -82,8 +84,8 @@ const clamp = (value: number, limit: number) => Math.max(-limit, Math.min(limit,
 // opacity. Derived from the node indexes so server and client agree.
 const edgeWeight = (a: number, b: number) => ((a * 7 + b * 13 + 3) % 10) / 9;
 
-const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
-  const { nodes, edges, sizes, wideHeight, tallHeight } = useMemo(() => buildNetwork(layers), [layers]);
+const EboardNetwork = ({ members }: { members: EboardMember[] }) => {
+  const { nodes, edges, sizes, wideHeight, tallHeight } = useMemo(() => buildNetwork(members), [members]);
   const neighbors = useMemo(() => {
     const sets = nodes.map(() => new Set<number>());
     edges.forEach(([a, b]) => { sets[a].add(b); sets[b].add(a); });
@@ -100,13 +102,17 @@ const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
   const haloEls = useRef<(HTMLSpanElement | null)[]>([]);
   const lineEls = useRef<Record<Layout, (SVGLineElement | null)[]>>({ wide: [], tall: [] });
   const pulseEls = useRef<Record<Layout, (SVGCircleElement | null)[]>>({ wide: [], tall: [] });
-  // Set by the animation effect; a no-op when motion is off.
+  const reachEls = useRef<Record<Layout, (SVGLineElement | null)[]>>({ wide: [], tall: [] });
+  // Set by the animation effect; no-ops when motion is off.
   const sendSignal = useRef<(path: number[]) => void>(() => {});
+  const ripple = useRef<(i: number) => void>(() => {});
 
   const activate = (i: number | null) => {
     activeRef.current = i;
     setActive(i);
-    if (i !== null) edges.forEach(([a, b]) => { if (a === i || b === i) sendSignal.current([a, b]); });
+    if (i === null) return;
+    ripple.current(i);
+    edges.forEach(([a, b]) => { if (a === i || b === i) sendSignal.current([a, b]); });
   };
 
   // Motion: nodes float, lean toward the cursor, and pass signals forward.
@@ -132,9 +138,10 @@ const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
 
     const fire = (i: number) =>
       haloEls.current[i]?.animate(
-        [{ transform: 'scale(1)', opacity: 0.55 }, { transform: 'scale(1.75)', opacity: 0 }],
+        [{ transform: 'scale(1)', opacity: 0.55 }, { transform: 'scale(1.8)', opacity: 0 }],
         { duration: 700, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)' }
       );
+    ripple.current = fire;
 
     const draw = () => {
       const layout = layoutNow();
@@ -163,6 +170,31 @@ const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
         dot.setAttribute('cx', (p.x + (q.x - p.x) * e).toFixed(1));
         dot.setAttribute('cy', (p.y + (q.y - p.y) * e).toFixed(1));
         dot.setAttribute('r', '3.5');
+      });
+      // Dashed feelers from the cursor to the nearest few people.
+      // Hidden while a node is hovered, so its own connections stand out.
+      const nearest = pointer.inside && activeRef.current === null
+        ? nodes
+            .map((_, i) => {
+              const p = at(i, layout);
+              return { i, p, d: Math.hypot(p.x - pointer.x, p.y - pointer.y) };
+            })
+            .filter(({ d }) => d < REACH_RADIUS)
+            .sort((a, b) => a.d - b.d)
+            .slice(0, REACHES)
+        : [];
+      reachEls.current[layout].forEach((line, k) => {
+        if (!line) return;
+        const hit = nearest[k];
+        if (!hit) {
+          line.style.opacity = '0';
+          return;
+        }
+        line.setAttribute('x1', pointer.x.toFixed(1));
+        line.setAttribute('y1', pointer.y.toFixed(1));
+        line.setAttribute('x2', hit.p.x.toFixed(1));
+        line.setAttribute('y2', hit.p.y.toFixed(1));
+        line.style.opacity = (0.25 + (1 - hit.d / REACH_RADIUS) * 0.75).toFixed(2);
       });
     };
 
@@ -195,10 +227,10 @@ const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
           const d = Math.hypot(dx, dy);
           if (i === activeRef.current) {
             // The hovered node follows the cursor around.
-            x += clamp(dx * 0.25, 18);
-            y += clamp(dy * 0.25, 18);
+            x += clamp(dx * 0.3, 22);
+            y += clamp(dy * 0.3, 22);
           } else if (d > 1 && d < MAGNET_RADIUS) {
-            const pull = (1 - d / MAGNET_RADIUS) ** 2 * 14;
+            const pull = (1 - d / MAGNET_RADIUS) ** 2 * 16;
             x += (dx / d) * pull;
             y += (dy / d) * pull;
           }
@@ -271,6 +303,7 @@ const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
       box.removeEventListener('pointermove', onMove);
       box.removeEventListener('pointerleave', onLeave);
       sendSignal.current = () => {};
+      ripple.current = () => {};
     };
   }, [nodes, edges, sizes]);
 
@@ -311,6 +344,13 @@ const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
               />
             );
           })}
+          {Array.from({ length: REACHES }, (_, k) => (
+            <line
+              key={`reach-${k}`}
+              ref={(el) => { reachEls.current[layout][k] = el; }}
+              className="stroke-violet opacity-0 [stroke-dasharray:4_5] [stroke-linecap:round] [stroke-width:1.75px]"
+            />
+          ))}
           {Array.from({ length: PULSES }, (_, slot) => (
             <circle
               key={slot}
@@ -322,27 +362,7 @@ const EboardNetwork = ({ layers }: { layers: EboardLayer[] }) => {
         </svg>
       ))}
 
-      {sizes.map((_, layer) => {
-        const first = nodes.find((node) => node.layer === layer)!;
-        return (
-          <p
-            key={layer}
-            aria-hidden
-            className="absolute left-1/2 top-(--label-y) my-0 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/80 bg-white/70 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink/60 backdrop-blur-sm md:left-(--label-x) md:top-0"
-            style={{ '--label-x': `${first.wide.x}%`, '--label-y': `${layer * TALL_ROW + 6}px` } as React.CSSProperties}
-          >
-            {layer < layers.length ? (
-              <>
-                <span className="text-violet">L{layer + 1}</span> · {layers[layer].label}
-              </>
-            ) : (
-              <span className="text-violet">Output</span>
-            )}
-          </p>
-        );
-      })}
-
-      <ul aria-label="Eboard members, from leadership to officers">
+      <ul aria-label="DSAIC eboard">
         {nodes.map((node, i) => (
           <li key={node.key}>
             <NetworkNode
@@ -400,8 +420,8 @@ const NetworkNode = ({
   const content = (
     <>
       <span
-        className={`relative rounded-full p-1 shadow-[0_12px_28px_-12px_rgb(114_67_193/0.75)] transition-transform duration-300 group-hover/node:scale-[1.14] group-focus-visible/node:scale-[1.14] group-focus-visible/node:outline-2 group-focus-visible/node:outline-offset-4 group-focus-visible/node:outline-violet motion-reduce:transition-none ${
-          state === 'near' ? 'scale-[1.05]' : ''
+        className={`relative rounded-full p-1 shadow-[0_12px_28px_-12px_rgb(114_67_193/0.75)] transition-transform duration-300 group-hover/node:scale-[1.2] group-focus-visible/node:scale-[1.2] group-focus-visible/node:outline-2 group-focus-visible/node:outline-offset-4 group-focus-visible/node:outline-violet motion-reduce:transition-none ${
+          state === 'near' ? 'scale-[1.06]' : ''
         }`}
       >
         <span ref={haloRef} aria-hidden className="absolute inset-0 rounded-full bg-violet/50 opacity-0" />

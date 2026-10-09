@@ -1,80 +1,63 @@
 import React from 'react';
-import EboardNetwork, { type EboardLayer } from '../team/EboardNetwork';
+import EboardNetwork, { type EboardMember } from '../team/EboardNetwork';
 
-// The eboard, drawn as a neural network: each layer feeds the next, and the
-// output is the next member. Order within a layer is top to bottom (left to
-// right on phones).
-const layers: EboardLayer[] = [
+// Lineup order. The network fills its layers from this list, three at a time.
+const members: EboardMember[] = [
   {
-    label: 'Leadership',
-    members: [
-      {
-        name: "Dr. Hong",
-        role: "Faculty Advisor",
-        initials: "H",
-        image: "/pfp/hong.webp",
-        profile: "https://wmich.edu/computer-science/directory/hong",
-      },
-      {
-        name: "Cody Thornell",
-        role: "President",
-        initials: "CT",
-        image: "/pfp/cody.webp",
-        profile: "https://www.linkedin.com/in/codythornell/",
-      },
-    ],
+    name: "Dr. Hong",
+    role: "Faculty Advisor",
+    initials: "H",
+    image: "/pfp/hong.webp",
+    profile: "https://wmich.edu/computer-science/directory/hong",
   },
   {
-    label: 'Vice presidents',
-    members: [
-      {
-        name: "Saad Mahmud",
-        role: "VP of Operations & Tech",
-        initials: "SM",
-        image: "/pfp/saad.webp",
-        profile: "https://www.linkedin.com/in/saad-mahmud-/",
-      },
-      {
-        name: "Rafia Authoi",
-        role: "VP of Marketing & Outreach",
-        initials: "RA",
-        image: "/pfp/rafia.webp",
-        profile: "https://www.linkedin.com/in/rafia-authoi/",
-      },
-    ],
+    name: "Cody Thornell",
+    role: "President",
+    initials: "CT",
+    image: "/pfp/cody.webp",
+    profile: "https://www.linkedin.com/in/codythornell/",
   },
   {
-    label: 'Officers',
-    members: [
-      {
-        name: "Syed Sobhan",
-        role: "Finance Officer",
-        initials: "SS",
-        image: "/pfp/syed.webp",
-        profile: "https://www.linkedin.com/in/syed-m-sobhan-4b998a358/",
-      },
-      {
-        name: "Matthew Phinney",
-        role: "Research Officer",
-        initials: "MP",
-        image: "/pfp/matthew.webp",
-        profile: "https://www.linkedin.com/in/matt-phinney-851237208/",
-      },
-      {
-        name: "Justin Tan",
-        role: "Research Officer",
-        initials: "JT",
-        image: "/pfp/justin.webp",
-        profile: "https://www.linkedin.com/in/justin-tan-02bb8a338/",
-      },
-      {
-        name: "Yulia Baez",
-        role: "Socials Officer",
-        initials: "YB",
-        image: "/pfp/yulia.webp",
-        profile: "https://www.linkedin.com/in/yulia-ildeliza-arias-baez-a5110a308/",
-      },
-    ],
+    name: "Saad Mahmud",
+    role: "VP of Operations & Tech",
+    initials: "SM",
+    image: "/pfp/saad.webp",
+    profile: "https://www.linkedin.com/in/saad-mahmud-/",
+  },
+  {
+    name: "Rafia Authoi",
+    role: "VP of Marketing & Outreach",
+    initials: "RA",
+    image: "/pfp/rafia.webp",
+    profile: "https://www.linkedin.com/in/rafia-authoi/",
+  },
+  {
+    name: "Syed Sobhan",
+    role: "Finance Officer",
+    initials: "SS",
+    image: "/pfp/syed.webp",
+    profile: "https://www.linkedin.com/in/syed-m-sobhan-4b998a358/",
+  },
+  {
+    name: "Matthew Phinney",
+    role: "Research Officer",
+    initials: "MP",
+    image: "/pfp/matthew.webp",
+    profile: "https://www.linkedin.com/in/matt-phinney-851237208/",
+  },
+  {
+    name: "Justin Tan",
+    role: "Research Officer",
+    initials: "JT",
+    image: "/pfp/justin.webp",
+    profile: "https://www.linkedin.com/in/justin-tan-02bb8a338/",
+  },
+  {
+    name: "Yulia Baez",
+    role: "Socials Officer",
+    initials: "YB",
+    image: "/pfp/yulia.webp",
+    profile: "https://www.linkedin.com/in/yulia-ildeliza-arias-baez-a5110a308/",
   },
 ];
 
@@ -108,11 +91,10 @@ const Team = () => {
           Club Eboard
         </h2>
         <p className="mx-auto mb-10 max-w-xl text-center text-lg text-ink/80 text-balance">
-          The people behind DSAIC, wired like a neural network. Each layer feeds the next, and the output is
-          you.
+          The people behind DSAIC, wired together like a neural network, with you as the output.
         </p>
 
-        <EboardNetwork layers={layers} />
+        <EboardNetwork members={members} />
       </div>
     </section>
   );
