@@ -65,12 +65,12 @@ const Resources = () => {
             linkType="github"
           />
 
-          {/* YC AI Startup School 2025 */}
+          {/* YC Startup School 2026 */}
           <ResourceCard
-            title="YC AI Startup School 2025"
-            description="Every year YC assembles the greatest AI minds to speak including Elon Musk, Satya Nadella, Sam Altman, Andrej Karpathy, Andrew Ng, Fei-Fei Li, Varun Mohan, John Jumper, Aravind Srinivas, Michael Truell and more."
+            title="YC Startup School 2026"
+            description="YC brought together some of the world's best founders, engineers, and researchers, including Jensen Huang (NVIDIA), Sam Altman (OpenAI), Patrick Collison (Stripe), Jeff Dean (Google), Alexandr Wang (Meta), Boris Cherny (Anthropic) and more."
             buttonText="YouTube"
-            buttonLink="https://www.youtube.com/playlist?list=PLQ-uHSnFig5NPx4adxl97CZb8vU4numwi"
+            buttonLink="https://www.youtube.com/playlist?list=PLEb7ftOB0yf0"
             color="ink"
             icon="robot"
             linkType="youtube"
