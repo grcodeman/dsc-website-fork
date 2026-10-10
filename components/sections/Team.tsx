@@ -90,9 +90,6 @@ const Team = () => {
         <h2 className="text-3xl font-heading tracking-widest mb-12 text-center uppercase text-ink">
           Club Eboard
         </h2>
-        <p className="mx-auto mb-10 max-w-xl text-center text-lg text-ink/80 text-balance">
-          The people behind DSAIC, wired together like a neural network, with you as the output.
-        </p>
 
         <EboardNetwork members={members} />
       </div>
